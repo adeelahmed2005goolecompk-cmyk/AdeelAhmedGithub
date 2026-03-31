@@ -1,0 +1,54 @@
+# Image gradient and edge detection
+
+# Theory About Image gradient--
+# It is a directional change in the color or intensity in an image.
+# It is more important part to find the informatoin from image.
+# Like finding edges within the images.
+# There are various methods image gradient.
+# These are laplacian, Darivatives, sobelX and sobelY.
+# All these functions have different mathematical approach to get result.
+# All load image in the gray scale
+
+import cv2
+import numpy as np
+
+# load image
+img = cv2.imread(r"A:\computer_Vision\ben-10.jpg")
+
+# resize image
+img = cv2.resize(img, (250, 250))
+
+# convert to grayscale
+img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+#Laplacion derivat---it calculate laplace derivat parameters like:
+# (img,data_type,for -ve val,ksize).
+lap = cv2.Laplacian(img_gray, cv2.CV_64F, ksize = 3)
+lap = np.uint8(np.absolute(lap))
+
+# Sobel operation is a joint gaussing smoothing plus defferention operaion,
+# so it is more resistant to noise.
+# This is use for X and Y boths.
+# It takes some parameters):-
+# Parameters = (img, type for -ve val, x = 1, y = 0, ksize)
+# Sobel x: this parameter is focused on vertical lines.
+# Sobel y: this parameter is focused on horizontal lines.
+
+sobelx = cv2.Sobel(img_gray,cv2.CV_64F,1,0,ksize = 3)
+sobely = cv2.Sobel(img_gray,cv2.CV_64F,0,1,ksize = 3)
+sobelx = np.uint8(np.absolute(sobelx))
+sobely = np.uint8(np.absolute(sobely))
+
+# finally combine sobelX and sobely together.
+
+sobelcombine = cv2.bitwise_or(sobelx,sobely)
+
+cv2.imshow("original image:", img)
+cv2.imshow("gray:", img_gray)
+cv2.imshow("Laplacian:", lap)
+cv2.imshow("sobelx:",sobelx)
+cv2.imshow("sobely:",sobely)
+cv2.imshow("Sobel combine:",sobelcombine)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
