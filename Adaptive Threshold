@@ -1,0 +1,48 @@
+# ADAPTIVE THRESHOLDING
+
+#Some Theroy About The Adaptive Threshold):-
+
+#We use it because simple thresholding is not able to handl. 
+# differrent type of low luminous pixels.
+# this is algorithm calculate the threshold for a small regions in same image.
+#so we get multiple threshold for diff regions in same image. 
+
+#Adaptive methode: it decides how thresholding value is calculated. 
+# cv2.ADAPTIVE_THRESH_MEAN_C :
+# cv2.ADAPTIVE_THRESH_GAUSSIAN_C :
+# threshold(img,pixels_thresh,_max_thresh_pixel,method,style,no._of_pixel,contact_mean)
+
+
+import cv2
+import numpy as np
+
+img = cv2.imread(r"A:\computer_Vision\534.jpg", cv2.IMREAD_GRAYSCALE)
+
+th1 = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)[1]
+
+th2 = cv2.adaptiveThreshold(
+    img,
+    255,
+    cv2.ADAPTIVE_THRESH_MEAN_C,
+    cv2.THRESH_BINARY,
+    11,
+    2
+)
+
+th3 = cv2.adaptiveThreshold(
+    img,
+    255,
+    cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
+    cv2.THRESH_BINARY,
+    11,
+    2
+)
+
+
+
+cv2.imshow("image", img)
+cv2.imshow("THRESH_BINARY", th1)
+cv2.imshow("adaptive 1==", th2)
+cv2.imshow("adaptive 2==", th3)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
