@@ -1,0 +1,60 @@
+# Image Operations with pixels and cordinates
+
+import cv2
+import numpy as np
+
+# Read an image
+img = cv2.imread(r"A:\computer_Vision\54.jpg")
+img = cv2.resize(img, (300, 300))
+
+print("shape==", img.shape)
+print("no.of pixels==", img.size)
+print("datatype==", img.dtype)
+print("imgtype==", type(img))
+
+# NOW TRYING TO SPLIT A IMGAGE
+
+ SPLIT = Returns 3 channels of your image(R, G, B)
+ print(cv2.split(img))
+
+ b,g,r = cv2.split(img)
+ # cv2.imshow("blue",b)
+ cv2.imshow("green",g)
+ cv2.imshow("red",r)
+
+ # Now we use the merge function for mixing our 3 channles
+
+ mr1 = cv2.merge((r,g,b))
+ cv2.imshow("r,g,b",mr1)
+ cv2.imshow("original", img)
+
+ cv2.waitKey(0)
+ cv2.destroyAllWindows()
+
+# Working on pixels of color values
+
+import cv2
+
+img = cv2.imread(r"A:\computer_Vision\lion.jpg")
+img = cv2.resize(img, (600, 600))
+cv2.imshow("lion==", img)
+
+print("shape==", img.shape)
+print("no.of pixels==", img.size)
+print("datatype==", img.dtype)
+print("imgtype==", type(img))
+
+# access a pixel value by its row and column coordinates
+px = img[520, 580]
+print("The pixels of that co-ordinates==", px)
+
+# Accessing channels (OpenCV uses BGR)
+blue = img[520, 580, 0]
+print("The pixels having blue color==", blue)
+green = img[520, 580, 1]
+print("The pixels having green color==", green)
+red = img[520, 580, 2]
+print("The pixels having red color==", red)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
