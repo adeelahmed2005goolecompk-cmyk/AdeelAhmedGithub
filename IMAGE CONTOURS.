@@ -1,0 +1,42 @@
+#                       ---Image Contours---
+
+
+# SOME THOERY ABOUT THE IMAGE CONTOURS):-
+
+# Contours can be explained simply as a curve joining all the continuous points
+# (along the boundary), having same color or intensity.
+# The contours are a usefull tools for shape analysis and object detection.
+# For better accuracy, use binary images and also apply edge detection before
+# finding countours.
+# Findecountour function manipulate original image so copy it before proceedig.
+# findcountour is like finding white object from black backgraound.
+# so you must turn image in white and backgraound is black.
+# we have to find and draw contours as per the requirement.
+
+
+import cv2
+import numpy as np
+
+img = cv2.imread(r"A:\computer_Vision\wow_pic.jpg")
+img = cv2.resize(img, (350, 350))
+cv2.imshow("original image:", img)
+
+img1 = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+ret, thresh = cv2.threshold(img1, 127, 255, cv2.THRESH_BINARY)
+
+# findContour(img, contour_retrieval_mode, method)
+cnts, hier = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+print(cnts, len(cnts))
+
+#Drawcontours(img,cnts,id of cnts,colo,thikness).
+#countour just pass -1.
+# draw the conyours.
+img = cv2.drawContours(img, cnts, -1, (20, 250, 15), 4)
+
+
+# DISPLAY PLACE----------------------------------------------------------------------
+cv2.imshow("gray image:", img1)
+cv2.imshow("thresh:", thresh)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
