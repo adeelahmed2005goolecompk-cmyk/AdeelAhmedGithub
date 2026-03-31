@@ -1,0 +1,41 @@
+#                    ---image backgraound removal---
+
+
+#BACK PROJECTION USING HISTOGRAM TECNIQUES.
+
+import cv2
+import numpy as np
+original_image = cv2.imread(r"A:\computer_Vision\919.jpg")
+original_image = cv2.resize(original_image, (250, 250))
+
+hsv_original = cv2.cvtColor(original_image, cv2.COLOR_BGR2HSV)
+
+#roi of second image):-
+roi = cv2.imread(r"A:\computer_Vision\copy.jpg")
+hsv_roi = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
+
+#HISTOGRAM Roi):-
+roi_hist = cv2.calcHist([hsv_roi], [0,1], None,
+                        [180, 256], [0, 180, 0, 256], 1)
+mask = cv2.calcBackProject([hsv_original],
+                        [0, 1], roi_hist, [0, 180, 0, 256], 1)
+
+#Filtering remove noise):-
+kernal = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+mask = cv2.filter2D(mask, -1, kernal)
+_, mask = cv2.threshold(mask, 200, 500, cv2.THRESH_BINARY)
+
+#merging mask):-
+mask = cv2.merge((mask, mask, mask))
+result = cv2.bitwise_or(original_image, mask)
+
+
+cv2.imshow("original image:", original_image)
+cv2.imshow("mask:",mask)
+cv2.imshow("result:",result)
+cv2.imshow("hsv_original:",hsv_original)
+
+
+#---Display Side---
+cv2.waitKey(0)
+cv2.destroyAllWindows()
