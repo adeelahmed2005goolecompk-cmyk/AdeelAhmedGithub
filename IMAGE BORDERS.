@@ -1,0 +1,23 @@
+# Creating image border
+
+#SOME THEORY):-
+
+# with the help of cv2.Copy make border()finction.
+# It takes parameters like(img,border_width,4-sides,bordertype,val_border).
+# border width = top,bottom,right,left.
+
+
+import cv2
+import numpy as np
+
+img1 = cv2.imread("A:\computer_Vision\lion.jpg")
+img1 = cv2.resize(img1,(500, 500))
+
+# Creating image border
+
+brdr = cv2.copyMakeBorder(img1, 20,20,5,5,cv2.BORDER_CONSTANT, value = [160, 27, 141])
+
+cv2.imshow("res",brdr)
+# cv2.imshow("img",img1)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
