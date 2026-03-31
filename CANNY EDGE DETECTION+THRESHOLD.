@@ -1,0 +1,56 @@
+                  # ----Canny edge detection----
+
+# Cannye edge detection using open cv
+# THEORY):-
+# Canny edge detection is a popular edge detection approach.
+# It is use multi-stage algorithm to detect a edge.
+# It was developed by Jhon f. Canny in 1986.
+# This approach combine with 5 steps.
+# step no1):-Noise reduction (gauss,2) and (Gradient clacilation).
+# step no2):-None maximum supperson,4) and (Double Threshold).
+# step no3):-Edge tracking by Hystresis.
+
+import cv2
+import numpy as np
+
+img = cv2.imread(r"A:\computer_Vision\43.jpg")
+img = cv2.resize(img, (250, 250))
+
+# convert to grayscale
+img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# Canny(img, threshold1, threshold2)
+canny = cv2.Canny(img_gray, 50, 150)
+
+cv2.imshow("Original Image:", img)
+cv2.imshow("Gray Image:", img_gray)
+cv2.imshow("Canny:", canny)
+
+#THRESHOLD):-
+
+import cv2
+import numpy as np
+
+img = cv2.imread(r"A:\computer_Vision\54.jpg")
+img = cv2.resize(img, (250, 250))
+
+# convert to grayscale
+img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+def nothing(x):
+    pass
+
+cv2.namedWindow("Canny")
+cv2.createTrackbar("Threshold", "Canny", 0, 255, nothing)
+
+while True:
+    a = cv2.getTrackbarPos("Threshold", "Canny")
+    res = cv2.Canny(img_gray, a, 255)
+
+    cv2.imshow("Canny", res)
+
+    k = cv2.waitKey(1) & 0xFF
+    if k == 110:  # N key
+        break
+
+cv2.destroyAllWindows()
