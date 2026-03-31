@@ -1,0 +1,31 @@
+#DRAWING ON VIDEO):-
+
+import cv2
+import datetime
+
+cap = cv2.VideoCapture(r"A:\computer_Vision\2006.mp4")
+
+print("Width====", cap.get(3))
+print("Height====", cap.get(4))
+
+while cap.isOpened():
+    ret, frame = cap.read()
+    if ret:
+        font = cv2.FONT_HERSHEY_SCRIPT_COMPLEX
+        
+        text = 'Height: ' + str(int(cap.get(4))) + '  Width: ' + str(int(cap.get(3)))
+        cv2.putText(frame, text, (10, 30), font, 1, (248, 117, 5), 2, cv2.LINE_AA)
+        
+        date_data = "Date: " + datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        cv2.putText(frame, date_data, (10, 70), font, 1, (247, 238, 5), 2, cv2.LINE_AA)
+        
+        frame = cv2.resize(frame, (500, 600))
+        cv2.imshow("frame", frame)
+        
+        if cv2.waitKey(10) & 0xFF == ord('n'):
+            break
+    else:
+        break
+
+cap.release()
+cv2.destroyAllWindows()
