@@ -1,0 +1,120 @@
+#                   ---feature detection on images---
+#Feature detection and description.
+ 
+#                   ---Corner detection---
+
+#                  ---There are three methods---
+
+                  #---METHOD NO 1---
+#Some theory about the feature detection on image):-
+
+# For understanding this we recall jigsaw puzzle game where we combine multiple
+# small pieces in correct order by identifyign its corners, shape and patterns.
+# On the bases of all these we all detect corners on image with so many approach.
+ 
+#                   ---Harris corner detection---
+# open cv has the function cv2.cornerHarris()for the purpose. Its arguments are
+# img - Input image, it should be grayscale and float32 type.
+# block size - It is the size of neighbourhood considered for corner detection.
+# Ksize - Aperture parameter of sobel drivate used.
+# K - Harris detector free paremeter in the equation.
+
+
+
+                  #---METHOD NO 2:-
+
+
+import cv2
+import numpy as np
+import math
+
+# ---------- Read Image ----------
+img = cv2.imread("A:\\computer_Vision\\shapes.png")
+img = cv2.resize(img, (500, 500))
+output = img.copy()
+
+# ---------- Convert to Gray ----------
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+gray_color = cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR)
+
+# ---------- Threshold ----------
+_, thresh = cv2.threshold(gray, 200, 255, cv2.THRESH_BINARY_INV)
+
+# ---------- Find Contours ----------
+contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+
+# ---------- Function to calculate angle ----------
+def angle(pt1, pt2, pt3):
+    a = np.array(pt1) - np.array(pt2)
+    b = np.array(pt3) - np.array(pt2)
+
+    cos_angle = np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+    cos_angle = np.clip(cos_angle, -1, 1)
+    ang = np.degrees(np.arccos(cos_angle))
+    return ang
+
+# ---------- Detect Sharp Corners ----------
+for cnt in contours:
+
+    if cv2.contourArea(cnt) < 300:
+        continue
+
+    epsilon = 0.01 * cv2.arcLength(cnt, True)
+    approx = cv2.approxPolyDP(cnt, epsilon, True)
+
+    for i in range(len(approx)):
+
+        pt1 = approx[i-1][0]
+        pt2 = approx[i][0]
+        pt3 = approx[(i+1) % len(approx)][0]
+
+        ang = angle(pt1, pt2, pt3)
+
+        if ang < 150:
+            # Blue corners on both images
+            cv2.circle(output, tuple(pt2), 4, (255, 0, 0), 1)
+            cv2.circle(gray_color, tuple(pt2), 4, (255, 0, 0), 1)
+
+# ---------- Show ----------
+cv2.imshow("Original Image:", output)
+cv2.imshow("Gray Image:", gray_color)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+
+                    #---METHOD NO 3---
+
+#                       ---shi-tomasi---
+#We will learn about the another corner detector):- Shi-Tomasi corner detector.
+#We will see the functions):- cv2.goodFeaturesToTrack().
+#Shi-Tomasi approach is more afective as compared with Harris corner detector.
+#In this we limit the number of corners and corners quality.
+#It is more user friendly.
+
+
+
+
+import numpy as np
+import cv2
+
+img = cv2.imread("A:\computer_Vision\shapes.png")
+
+#----------now resize the image----------
+img = cv2.resize(img,(400,400))
+#---------- convert image to gray scale ----------
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+#-----parameters):- (img,no.of corner,quality_level,min_distance between corner)
+corners = cv2.goodFeaturesToTrack(gray,140,0.01,5)
+corners = np.int64(corners)
+
+#----------starting the insane loop----------
+for i in corners:
+    x,y = i.ravel()
+    cv2.circle(img,(x,y),3,255,-1)
+
+cv2.imshow("result:",img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
