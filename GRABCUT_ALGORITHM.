@@ -1,0 +1,46 @@
+#                   ---Grabcut Algorithm---
+
+#           ---Here is the some theory of grabcut algorithm---
+
+#     ---SOME THEORY--
+
+# Grabcut algorithm with the help of this algorithm we easily cutoff any 
+# graound object from image or video. Its work like a rectangle portion mark on
+# the image and area outise the rectangle is treat as a extra part so this 
+# algo remove it completely. Gaussian mixtuere model help to achive the target.
+
+
+
+import cv2
+import numpy as np
+
+img = cv2.imread("A:\\computer_Vision\\car.jpg")
+img = cv2.resize(img, (700, 500))
+
+# Create mask
+mask = np.zeros(img.shape[:2], np.uint8)
+
+# Background & Foreground models
+bgdModel = np.zeros((1, 65), np.float64)
+fgdModel = np.zeros((1, 65), np.float64)
+
+# Rectangle (adjust if needed)
+rect = (60, 60, 580, 380)
+
+# Apply GrabCut
+cv2.grabCut(img, mask, rect, bgdModel, fgdModel, 7, cv2.GC_INIT_WITH_RECT)
+
+# Proper mask refinement
+mask2 = np.where((mask == cv2.GC_FGD) | (mask == cv2.GC_PR_FGD), 1, 0).astype('uint8')
+
+# Stronger morphology to remove background noise
+kernel = np.ones((3, 3), np.uint8)
+mask2 = cv2.morphologyEx(mask2, cv2.MORPH_CLOSE, kernel, iterations=3)
+mask2 = cv2.morphologyEx(mask2, cv2.MORPH_OPEN, kernel, iterations=2)
+
+# Apply clean mask (NO BLUR)
+result = img * mask2[:, :, np.newaxis]
+
+cv2.imshow("Sharp Car Detection", result)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
