@@ -1,0 +1,49 @@
+#BITWISE OPERATIONS):-
+
+#SOME THEORY):-
+
+# bitwise operations includes AND, OR, NOT, XOR.
+# It is more important and used for various purposes like making
+# and finding ROI (Region of Interest)
+
+import cv2
+import numpy as np
+
+# create blank images
+img1 = np.zeros((250, 500, 3), np.uint8)
+img2 = np.zeros((250, 500, 3), np.uint8)
+
+# draw rectangles
+img1 = cv2.rectangle(img1, (150, 100), (200, 250), (255, 255, 255), -1)
+img2 = cv2.rectangle(img2, (10, 10), (170, 190), (255, 255, 255), -1)
+
+# show images
+cv2.imshow("img1", img1)
+cv2.imshow("img2", img2)
+
+# bitAnd operation
+
+# bitAnd = cv2.bitwise_and(img1,img2)
+
+# cv2.imshow('bitAnd',bitAnd)
+
+
+# OR operation
+
+# bitOr = cv2.bitwise_or(img1,img2)
+# cv2.imshow('bitOr',bitOr)
+
+# NOT operation
+
+# bitNot1 = cv2.bitwise_not(img1)
+# bitNot2 = cv2.bitwise_not(img2)
+
+# cv2.imshow('bitNot1',bitNot1)
+# cv2.imshow('bitNot2',bitNot2)
+
+# XOR operation
+bitXor = cv2.bitwise_xor(img1, img2)
+cv2.imshow('bitXor', bitXor)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
