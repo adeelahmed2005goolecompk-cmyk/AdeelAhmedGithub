@@ -1,0 +1,149 @@
+#                   ---Histogramic Image---
+
+#SOME THEORY LINES):-
+
+#THERE ARE THE 5 METHODS:
+
+# Image histogram - find,plot and analyze.
+# It which gives you can overall idea about the intensity distrbution of an image.
+# It distribute data along x axis and y axis.
+# x - axis contain range of color values.
+# y - axis contain numbers of pixels in an images.
+# with histogram to extract information about contast, brightness and contensity etc.
+# plot histograme using matplotlib.
+
+#METHOD NO1):-
+
+ import cv2
+ import numpy as np
+ from matplotlib import pyplot as plt
+
+# plotting calcHist method):-
+ img = np.zeros((200, 200), np.uint8)
+
+ # Drawing rectanlgles):-
+ cv2.rectangle(img, (0,100), (200, 200), (100), -1)
+ cv2.rectangle(img, (0, 50), (50, 100), (127), -1)
+
+ # calcHist code):-
+ # It accepts parameters like ([img], [channel], mask, [histsize], range [0-255])
+ hist = cv2.calcHist([img], [0], None, [256], [0, 256])
+ plt.plot(hist)
+
+
+ # Display Side):--
+
+ plt.show()
+ cv2.imshow("Result:", img)
+ cv2.waitKey(0)
+ cv2.destroyAllWindows()
+
+
+
+#METHOD NO2):-
+
+ import cv2
+ import numpy as np
+ from matplotlib import pyplot as plt
+
+ # with image color):--
+ img = cv2.imread(r"A:\computer_Vision\54.jpg")
+ img = cv2.resize(img, (250, 250))
+
+ b, g, r = cv2.split(img)
+
+ cv2.imshow("img:", img)
+ cv2.imshow("b:", b)
+ cv2.imshow("g:", g)
+ cv2.imshow("r:", r)
+
+ # plotting different channel with hist):-
+ plt.hist(b.ravel(), 256, [0, 256])
+ plt.hist(g.ravel(), 256, [0, 256])
+ plt.hist(r.ravel(), 256, [0, 256])
+ plt.title("ColorFull Image:")
+ plt.show()
+
+ cv2.waitKey(0)
+ cv2.destroyAllWindows()
+
+
+
+
+#METHOD NO3):-
+ import cv2
+ import numpy as np
+ from matplotlib import pyplot as plt
+
+ # with image color):--
+ img = cv2.imread(r"A:\computer_Vision\54.jpg")
+ img = cv2.resize(img, (250, 250))
+
+ # Gray scale graph):-
+ img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+ hist = cv2.calcHist([img_gray], [0], None, [256], [0, 256])
+
+ plt.plot(hist)
+ plt.title("Gray Image:")
+ plt.show()
+
+
+
+
+#METHOD NO4):-
+ import cv2
+ import numpy as np
+ from matplotlib import pyplot as plt
+
+ # Read and resize image
+ img = cv2.imread(r"A:\computer_Vision\54.jpg")
+ img = cv2.resize(img, (250, 250))
+
+ # Convert to gray scale
+ img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+ # Histogram equalization
+ equ = cv2.equalizeHist(img_gray)
+ res = np.hstack((img_gray, equ))
+
+ cv2.imshow("Original and Equalized", res)
+
+ # Plot equalized histogram
+ hist1 = cv2.calcHist([equ], [0], None, [256], [0, 256])
+ plt.plot(hist1)
+ plt.title("Equalized Histogram:")
+ plt.show()
+
+ cv2.waitKey(0)
+ cv2.destroyAllWindows()
+
+
+
+#METHOD NO5):-
+import cv2
+import numpy as np
+from matplotlib import pyplot as plt
+
+#               ---Contrast equalization histrogram---
+#CLAHE):--(.Contrats Limited Addaptive Histogram Equalization)
+#Create a CLAHE object, (Arguments are optional)
+#It is used to enhance image and also handle noise from image region.
+#Gray scale image is required.
+
+img = cv2.imread(r"A:/computer_Vision/54.jpg")
+img = cv2.resize(img, (250, 250))
+
+img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
+cl1 = clahe.apply(img_gray)
+
+cv2.imshow("clahe", cl1)
+
+hist2 = cv2.calcHist([cl1], [0], None, [256], [0, 256])
+plt.plot(hist2)
+plt.title("CLAHE:")
+plt.show()
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
