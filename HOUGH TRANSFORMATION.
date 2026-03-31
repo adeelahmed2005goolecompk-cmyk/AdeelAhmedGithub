@@ -1,0 +1,87 @@
+#                       ---Hough Transformation Lines---
+
+#                   THIS IS THE SOME THEORY ABOUT HOUGH TRANSFORMATION):-
+
+# Hough Transformation is a popular techniqu todetect any shape,
+# If you can represent that shape in mathemtical form. It can detect the shape
+# even if it is broken or distored a little bit.
+# Functions):--
+# cv2.houghLines(), cv2.houghLinesP()
+# 
+# Its steps):--
+# step no1):-
+# Convert image into gray.
+# 
+# step no2):-
+# detect edges.
+# 
+# step no3):-
+# then apply hough method.
+# 
+#---------------cv2.houghLines()---------------
+# We represent the shpes with the help of lines.
+# And lines are expressed for hough transformation by ---
+# certain CS(cordinte sysytem--->) y = mx+c and polar CS---> xcos0+ysin0
+
+
+# Type No1 Of Hough Transformation):--
+
+
+import cv2
+import numpy as np
+
+img = cv2.imread(r"A:\computer_Vision\chess_1.png")
+img = cv2.resize(img, (250, 250))
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+edges = cv2.Canny(gray, 20, 250)
+
+lines = cv2.HoughLines(edges, 1, np.pi/180, 200)
+
+for line in lines:
+    rho, theta = line[0]
+    a = np.cos(theta)
+    b = np.sin(theta)
+    x0 = a * rho
+    y0 = b * rho
+    x1 = int(x0 + 1000 * (-b))
+    y1 = int(y0 + 1000 * (a))
+    x2 = int(x0 - 1000 * (-b))
+    y2 = int(y0 - 1000 * (a))
+    
+    # Draw only top lines (y-coordinates less than 100)
+    if y1 < 100 and y2 < 100:
+        cv2.line(img, (x1, y1), (x2, y2), (255, 0, 255), 2)
+
+cv2.imshow("Edges", edges)
+cv2.imshow("Top Lines", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+# Type No2 Of Hough Transformation):--
+
+
+import cv2
+import numpy as np
+
+img = cv2.imread(r"A:\computer_Vision\square.jpg")
+img = cv2.resize(img, (250, 250))
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+edges = cv2.Canny(gray, 20, 250)
+
+lines = cv2.HoughLinesP(edges, 1, np.pi/180, 100,
+                        minLineLength=8, maxLineGap=100)
+
+# insane loop):--
+for line in lines:
+    x1,y1,x2,y2 = line[0]
+    cv2.line(img,(x1,y1),(x2,y2),(100,200,125),2)
+    
+
+
+#DISPLAY SIDE):--- 
+
+cv2.imshow("Edges", edges)
+cv2.imshow("Top Lines", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
