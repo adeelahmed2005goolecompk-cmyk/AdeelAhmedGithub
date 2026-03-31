@@ -1,0 +1,49 @@
+#               ---IMAGE PYRAMIDS---
+
+#            ...THE UP AND DOWN PYRAMIDS...
+
+
+# We use pyramids because somtimes we work on a same image but
+# different resolution e.g. searching face, eyes in an image and
+# it very image to image so in this case we create a ser of images 
+# with diff. Resolution whcih is called pyramid. We also use these
+# pyramids to blend these images. 
+
+
+# There are two types of image pyramids):-
+# 1)- Gaussian pyramid 2)- Laplacina pyramids.
+
+import cv2
+import numpy as np
+
+# Loading the image ):-
+
+img = cv2.imread("A:\computer_Vision\HARD.JPG")
+
+# Getting the resized image):-
+img = cv2.resize(img,(400,400))
+
+# Gaussian pyramid have 2 functions: 1)-purUp, 2)-pyrDown.
+
+# pyramid Down):-
+pd1 = cv2.pyrDown(img)
+pd2 = cv2.pyrDown(pd1)
+
+# Now using the pyramid Up):-
+pu1 = cv2.pyrUp(pd2)
+pu2 = cv2.pyrUp(pu1)
+
+
+
+# Now showing the image):-
+
+img = cv2.imshow("The image:",img)
+img = cv2.imshow("PYRAMID DOWN:",pd1)
+img = cv2.imshow("PYRAMID DOWN 2:",pd2)
+img = cv2.imshow("PYRAMID UP:",pu1)
+img = cv2.imshow("PYRAMID UP:",pu2)
+
+
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
