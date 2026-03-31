@@ -1,0 +1,107 @@
+#               ---Contours and its functoins---
+#no1):-Moment. 
+#no2):-Approximation.
+#no3):-Convexhull
+
+
+import cv2
+import numpy as np
+
+img = cv2.imread(r"A:\computer_Vision\shapes.png")
+img = cv2.resize(img,(250, 250))
+img1 = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+ret, thresh = cv2.threshold(img1, 250, 255, cv2.THRESH_BINARY_INV)
+
+cnts, hier = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+# Here cnts is a list of contours and each contour is an array with x,y.
+# hier variable is called hierarchy and it contains image information.
+print("Number of contours:", len(cnts))
+print("Contours:", cnts)
+print("Hierarchy:", hier)
+
+# draw contours):-
+# img = cv2.drawContours(img, cnts, -1, (255, 20, 100), 2)
+
+# loop over the contours):-
+for c in cnts:
+    # Compute the center of the center.
+    # An image moment is a certain paticular wheighted average (moment) of the image.
+    M = cv2.moments(c)
+    if M["m00"] != 0:
+        cX = int(M["m10"] / M["m00"])
+        cY = int(M["m01"] / M["m00"])
+
+        cv2.circle(img, (cX, cY), 3, (222, 222, 22), -1)
+        cv2.putText(img, "Center", (cX - 20, cY - 10),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.3, (0, 255, 0), 1)
+
+# DISPLAY SIDE):-
+
+cv2.imshow("original image:", img)
+cv2.imshow("gray image:", img1)
+cv2.imshow("thresh image:", thresh)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+
+
+
+
+# now we read the Approximation and Convexhull.
+
+
+
+import cv2
+import numpy as np
+
+img = cv2.imread(r"A:\computer_Vision\shapes.png")
+img = cv2.resize(img,(250, 250))
+img1 = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+ret, thresh = cv2.threshold(img1, 250, 255, cv2.THRESH_BINARY_INV)
+
+cnts, hier = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+# Here cnts is a list of contours and each contour is an array with x,y.
+# hier variable is called hierarchy and it contains image information.
+print("Number of contours:", len(cnts))
+print("Contours:", cnts)
+print("Hierarchy:", hier)
+
+# draw contours):-
+area1 = []
+# img = cv2.drawContours(img, cnts, -1, (255, 20, 100), 2)
+# loop over the contours):-
+for c in cnts:
+    # Compute the center of the center.
+    # An image moment is a certain paticular wheighted average (moment) of the image.
+    M = cv2.moments(c)
+    if M["m00"] != 0:
+        cX = int(M["m10"] / M["m00"])
+        cY = int(M["m01"] / M["m00"])
+        # find area of contour):-
+        area = cv2.contourArea(c)
+        area1.append(area)
+            
+# Contour Approx):-
+        epsilon = 0.01*cv2.arcLength(c,True)
+        data = cv2.approxPolyDP(c,epsilon,True)
+# Convexhull is used to provide proper contours convexity.
+        hull = cv2.convexHull(data)
+        x,y,w,h = cv2.boundingRect(hull)
+        img = cv2.rectangle(img,(x,y),(x+w,y+h),(125, 10, 20), 1)
+
+        cv2.circle(img, (cX, cY), 3, (222, 222, 22), -1)
+        cv2.putText(img, "Center", (cX - 20, cY - 10),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.3, (0, 255, 0), 1)
+
+# DISPLAY SIDE):-
+
+cv2.imshow("original image:", img)
+cv2.imshow("gray image:", img1)
+cv2.imshow("thresh image:", thresh)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
