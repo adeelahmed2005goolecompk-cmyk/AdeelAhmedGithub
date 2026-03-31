@@ -1,0 +1,78 @@
+#                          ---Image smoothing---
+#Image smoothing or bluring is most common sued operation in image processing. 
+#It is used to remoe noise from the image.
+#There are so many filters which is use for smoothing the images.
+#There are Low pass filter(l.p.f) with use to remove noise from the image.
+#There are high pass filter(h.p.f) which is use to detect and finding edges in an images.
+
+# We discuss about vaious filter--
+#like, homogeneous, blur, (averaging), gaussian, median and bialteral 
+
+
+import cv2
+import numpy as np
+
+img = cv2.imread(r"A:\computer_Vision\534.jpg")
+img = cv2.resize(img, (250, 250))
+
+cv2.imshow("original img:", img)
+
+# Filter no1):- 
+# This filter work like each output pixel is the mean of its kernel neigbour. 
+# It is aka homogeneuos filter in this all pixels contribute with equal weight. 
+# kernel is a small shape or matrix which we apply on image. 
+# in this filter kernel is [(1/kernel(h,w))*kernel].
+
+kernel = np.ones((5, 5), np.float32) / 25
+h_filter = cv2.filter2D(img, -1, kernel)
+cv2.imshow("homogeneous", h_filter)
+
+# Filter no2):-
+# Blur method or averaging.
+# It takes the avg of all the pixels under kernel area and replaces the centeral 
+# element with this image.
+
+blur = cv2.blur(img, (8, 8))
+cv2.imshow("blur:", blur)
+
+# Filter no3):- 
+# Gaussian filter-- Here it using different weight kernel, in row as well.
+# Its means that side values are small then center.Its image distance b/w value of pixels
+
+gau = cv2.GaussianBlur(img, (5, 5), 0)
+cv2.imshow("gau blur:", gau)
+
+# Filter no4):-
+#median filter-- computes the median of all the pixels under kernel,winsows and the centeral 
+#pixels is replace with this median value. 
+# this is highly effective in removing salt-and-pepper noise.
+# Here kernel size must be odd except one.
+
+med  = cv2.medianBlur(img,5)
+cv2.imshow("median filter:",med)
+
+# bilateral filter --- is highly effective at noise removal while preserving edges.
+# Its work like gaussian filter but more focus on edges.
+# it is slow as compare with other filters .
+# argument(img, neigbour_pixels_diameter,simga color, simga_space)
+
+bi_f = cv2.bilateralFilter(img, 9,75,75)
+cv2.imshow("bi_f:",bi_f)
+titles = ["original image", "homoblur", "blur", "gauss", "med", "bi_f"]
+images = [img, h_filter, blur, gau, med, bi_f]
+
+from matplotlib import pyplot as plt
+
+for i in range(6):
+    plt.subplot(2, 3, i + 1)
+    plt.imshow(images[i], cmap='gray')
+    plt.title(titles[i])
+    plt.xticks([])
+    plt.yticks([])
+
+plt.tight_layout()
+plt.show()
+
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
