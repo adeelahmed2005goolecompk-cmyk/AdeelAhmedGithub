@@ -1,0 +1,37 @@
+# Performing some operations on image):-
+
+import numpy as np
+import cv2
+
+# Read image (make sure file has extension like .jpg or .png.)
+img = cv2.imread("A:/computer_Vision/602.jpg")
+
+# Draw a rectangle.
+cv2.rectangle(img, (50, 50), (200, 200), (0, 255, 0), -2)
+
+# Draw a circle.
+cv2.circle(img, (200, 200), 50, (255, 0, 0), -2)
+
+# Draw a line.
+cv2.line(img, (0, 0), (200, 200), (0, 0, 255), 2)
+
+# DRAWING ARROWED LINE.
+img = cv2.arrowedLine(img, (0, 125), (255, 255), (255, 0, 125), 3)
+
+# Put text.
+img = cv2.putText(img, "MR.SHAMEER", (20, img.shape[0]-20),
+                  cv2.FONT_HERSHEY_SCRIPT_SIMPLEX, 1,
+                  (0,125,255), 2, cv2.LINE_AA)
+
+img = cv2.ellipse(img, (200, 200), (100, 50), 70, 70, 500, (155, 155, 155), -5)
+
+#FOR FULL BLACK SCREEN.
+# img = np.zeros([512, 512, 3], np.uint8)*255
+
+# FOR FULL WHITE SCREEN.
+# img = np.ones([512, 512, 3], np.uint8)*255
+
+# Show image.
+cv2.imshow("Image", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
