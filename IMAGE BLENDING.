@@ -1,0 +1,39 @@
+# Image blending with OpenCV
+
+import cv2
+import numpy as np
+
+# Read images (with correct file extensions)
+img1 = cv2.imread(r"A:\computer_Vision\pic_1.jpg")
+img2 = cv2.imread(r"A:\computer_Vision\pic_2.jpg")
+
+# Check images loaded
+if img1 is None or img2 is None:
+    print("Error: One or both images not found")
+    exit()
+
+# Resize images to same size
+img1 = cv2.resize(img1, (500, 500))
+img2 = cv2.resize(img2, (500, 500))
+
+# Blend images
+blend = cv2.addWeighted(img1, 0.5, img2, 0.5, 0)
+
+# Show images
+cv2.imshow("pic_1", img1)
+cv2.imshow("pic_2", img2)
+
+# Now start blending
+# result = img2+img1
+# cv2.imshow("result==",result)
+
+# This is the correcr blending>>
+# result1 = cv2.add(img1,img2)
+# cv2.imshow("result1==",result1)
+
+# function cv2.addweight(img1,wght1, img2,wght2, gama_val)
+result2 = cv2.addWeighted(img1,0.5,img2,0.5,1)
+cv2.imshow("result2==",result2)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
