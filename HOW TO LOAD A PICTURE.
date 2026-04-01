@@ -1,0 +1,14 @@
+#THIS CODE IS SHOWING THAT HOW TO LOAD AN IMAGE:
+
+import cv2
+
+path = "A:\computer_Vision/602.jpg"
+img1 = cv2.imread(path)
+
+if img1 is None:
+    print("Image not loaded. Check the path.")
+else:
+    print("Image loaded successfully.")
+    cv2.imshow("Image", img1)  # window name + image
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
