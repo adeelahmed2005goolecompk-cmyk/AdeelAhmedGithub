@@ -1394,7 +1394,7 @@ It enables navigation in unfamiliar environments and is fundamentally a **probab
   Represents robot poses and constraints as a graph and solves using optimization.
 
 ---
-![Alt Text](images/1.jpeg)
+![Alt Text](images/one.jpg)
 ## Sensors Used in SLAM
 
 - **Odometer**
