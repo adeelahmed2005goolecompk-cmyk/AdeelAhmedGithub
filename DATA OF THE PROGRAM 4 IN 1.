@@ -1,0 +1,124 @@
+# 4_in_1_code):-
+
+# There we have 4 different code with a little bit of theory.
+
+# SOME THEORY ABOUT THIS ALL CODE:
+
+#IN THE FIRST CODEIS ABOUT VIDEO LOADING. 
+#IN THIS CODE WRITTENED THAT HOW TO SHOW A VIDEO WITH CODING.
+
+# CODE NO1):-
+import cv2
+
+cap = cv2.VideoCapture(r"A:\computer_Vision\2005.mp4")
+
+while True:
+    ret, frame = cap.read()
+    if not ret:
+        break
+ 
+    frame = cv2.resize(frame, (700, 700))  # width, height
+    # gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+    cv2.imshow("frame", frame)
+    # cv2.imshow("gray", gray)
+    if cv2.waitKey(25) & 0xFF == ord('n'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+
+# THIS CODE IS SHOWING THAT HOW TO OPEN THE PC'S WEB CAM AND 
+# CONVERT IT INTO TWO DIFFERENT FRAMES 1 IS ORIGINAL AND 2 IS GRAY.
+
+# CODE NO 2):-
+
+import v2
+cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+print(cap)
+
+while cap.isOpened():
+    ret, frame = cap.read()
+    if ret:
+        frame = cv2.resize(frame, (700, 600))
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+        cv2.imshow("frame", frame)
+        cv2.imshow("gray", gray)
+
+        if cv2.waitKey(1) & 0xFF == ord('n'):
+            break
+    else:
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+
+
+
+
+# IN THIS CODE HAVE WRITTENED THAT HOW TO CONNECT YOUR PC WITH YOUR MOBILE PHONE.
+# BUT THE MAIN POINT IS THAT YOUR PC AND MOBILE BOTH ARE CONNECTED WITH SAME NETWORK.
+# FOR EXM:- WIFI OR PC CONNECT WITH MOBILE.
+
+# CODE NO 3):-
+import cv2
+camera = "http://192.168.100.4:8080/video"
+cap = cv2.VideoCapture(0)
+cap.open(camera)
+print("check ===", cap.isOpened())
+
+fourcc = cv2.VideoWriter_fourcc(*"XVID")
+output = cv2.VideoWriter("A:\\KING.mp4", fourcc, 20.0, (700, 600))
+
+while cap.isOpened():
+    ret, frame = cap.read()
+    if ret:
+        frame = cv2.resize(frame, (700, 600))
+        output.write(frame)
+        cv2.imshow("color frame", frame)
+        if cv2.waitKey(1) & 0xFF == ord('n'):
+            break
+    else:
+        break
+
+cap.release()
+output.release()
+cv2.destroyAllWindows()
+
+
+
+# IN THIS CODE HAVE WRITTENED THAT HOW TO PLAY 
+# LIVE VIDEO IN TO YOUTUBE WITH CODING.
+
+# CODE NO 4):-
+
+import cv2
+import pafy
+
+url = "https://www.youtube.com/watch?v=DIf8twwgDzw"
+
+video = pafy.new(url)
+best = video.getbest(preftype="mp4")
+
+cap = cv2.VideoCapture(cv2.CAP_DSHOW)
+print("check ===", cap.isOpened())
+
+fourcc = cv2.VideoWriter_fourcc(*"XVID")
+output = cv2.VideoWriter("A:\\KING.mp4", fourcc, 20.0, (700, 600))
+
+while cap.isOpened():
+    ret, frame = cap.read()
+    if not ret:
+        break
+
+    frame = cv2.resize(frame, (700, 600))
+    output.write(frame)
+    cv2.imshow("color frame", frame)
+
+    if cv2.waitKey(1) & 0xFF == ord('n'):
+        break
+
+cap.release()
+output.release()
+cv2.destroyAllWindows()
