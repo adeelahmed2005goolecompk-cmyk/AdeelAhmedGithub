@@ -1,0 +1,33 @@
+# Today we dissciting about roi[region of intrest]
+
+import cv2
+import numpy as np
+
+# Read image
+img = cv2.imread(r"A:\computer_Vision\roi.jpg")
+
+# Check image loaded
+if img is None:
+    print("Error: Image not found")
+    exit()
+
+# Resize image
+img = cv2.resize(img, (500, 500))
+
+# ROI = Region of Interest
+# format: img[y1:y2, x1:x2]
+roi = img[241:833, 2857:3321]
+
+# Paste ROI to another location (same size)
+img[241:833, 2977:3441] = roi
+img[241:833, 3097:3561] = roi
+img[241:833, 2857:3321] = roi
+
+
+
+
+# Show images
+cv2.imshow("img", img)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
