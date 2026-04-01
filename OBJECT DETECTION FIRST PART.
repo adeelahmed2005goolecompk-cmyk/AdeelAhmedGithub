@@ -1,0 +1,28 @@
+#OBJECT DETECTION PART 1...
+
+import cv2
+import numpy as np
+
+frame = cv2.imread(r"A:\computer_Vision\color_balls.jpg")
+
+if frame is None:
+    exit()
+
+while True:
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+
+    # lower HSV must be smaller than upper HSV
+    l_v = np.array([17, 177, 177])
+    u_v = np.array([37, 248, 248])
+
+    mask = cv2.inRange(hsv, l_v, u_v)
+    res = cv2.bitwise_and(frame, frame, mask=mask)
+
+    cv2.imshow("frame", frame)
+    cv2.imshow("mask", mask)
+    cv2.imshow("res", res)
+
+    if cv2.waitKey(1) & 0xFF == 110:   #press ...(n)... to exit.
+        break
+
+cv2.destroyAllWindows()
