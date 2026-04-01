@@ -1,0 +1,111 @@
+#                   ---Template Mathching---
+ 
+# SOME THEORY ABOUT TEMPLATE MATCHING...
+
+#This is a method for searching and finding the location of a template image in
+#a larger image. Open cv comes with a function cv2.matchTemplate()for this
+#purpose. It simply slides the template image over the imput image (as in
+#2d convolution) and compares the template and path of input image under 
+#the template image.
+#------------------------------------------------------------------------------
+# THER WE HAVE 2 METHODS OF TEMPLATE MATCHING.
+
+# METHOD NO1:-
+
+import cv2
+import numpy as np
+
+# load image
+img = cv2.imread(r"A:\computer_Vision\ben-ten.jpg")
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# load face cascade
+face_cascade = cv2.CascadeClassifier(
+    cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
+)
+
+# detect face
+faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5)
+
+# make face box = full head (hair to chin)
+if len(faces) > 0:
+    x, y, w, h = max(faces, key=lambda f: f[2] * f[3])
+
+    # extend box upward (hair) and downward (chin)
+    x = int(x - 0.2 * w)
+    y = int(y - 0.6 * h)
+    w = int(w * 1.4)
+    h = int(h * 2.0)
+
+    # keep box inside image
+    x = max(0, x)
+    y = max(0, y)
+    w = min(w, img.shape[1] - x)
+    h = min(h, img.shape[0] - y)
+
+    print("Head Coordinates:", (x, y))
+    cv2.rectangle(img, (x, y), (x + w, y + h), (0, 0, 255), 2)
+
+# resize
+img = cv2.resize(img, (250, 250))
+gray = cv2.resize(gray, (250, 250))
+
+# show images
+cv2.imshow("Image 1:", img)
+cv2.imshow("Image 2:", gray)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+
+# METHOD NO2:-
+  
+import cv2
+import numpy as np
+
+# -------- READ IMAGE --------
+img = cv2.imread(r"A:\computer_Vision\ben-ten.jpg")
+img = cv2.resize(img, (250, 250))
+
+# -------- GRAYSCALE --------
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+cv2.imshow("Gray Image", gray)
+
+# -------- THRESHOLD --------
+_, thresh = cv2.threshold(gray, 120, 255, cv2.THRESH_BINARY)
+cv2.imshow("Threshold Image", thresh)
+
+# -------- TEMPLATE Matching --------
+template = thresh[50:120, 50:120]
+h, w = template.shape
+
+# -------- METHODS --------
+methods = [
+    cv2.TM_CCOEFF,
+    cv2.TM_CCOEFF_NORMED,
+    cv2.TM_CCORR,
+    cv2.TM_CCORR_NORMED,
+    cv2.TM_SQDIFF,
+    cv2.TM_SQDIFF_NORMED
+]
+
+# -------- APPLY ALL METHODS --------
+for method in methods:
+    img_draw = img.copy()
+
+    res = cv2.matchTemplate(thresh, template, method)
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+
+    if method in [cv2.TM_SQDIFF, cv2.TM_SQDIFF_NORMED]:
+        top_left = min_loc
+    else:
+        top_left = max_loc
+
+    bottom_right = (top_left[0] + w, top_left[1] + h)
+    cv2.rectangle(img_draw, top_left, bottom_right, (0, 255, 0), 2)
+
+    cv2.imshow(f"Method: {method}", img_draw)
+    cv2.waitKey(0)
+
+cv2.destroyAllWindows()
