@@ -28,13 +28,19 @@
 
 ---
 
-# 🟦 Hello world program
+# 🟦 Face and eyes Detection On Image.
 
 
-Face and eyes Detection On Image.
-		Introduction):-
+
+** Introduction):-
+
+
 So today we read about Face detection in an image is a computer vision technique used to locate and identify human faces within a picture. It works by analyzing visual features such as edges, shapes, and patterns that resemble facial structures. In OpenCV, face detection is commonly performed using Haar Cascade classifiers. This technique is widely used in security systems, cameras, and biometric applications.
-Here we starts some questions):-
+
+
+** Here we starts some questions):-
+
+
 Qno1):- What is the ‘Haarcascade file’?
 Ans):- The ‘HaarCascade file’ is a classifier file in which it is defined what a face looks like, including its parameters and features. All possible details about the face are available in that file. It is a part of computer vision.
 Qno2):- What is the code of loading an image?
