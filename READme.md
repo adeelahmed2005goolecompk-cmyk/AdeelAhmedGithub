@@ -872,7 +872,7 @@ import cv2
 import numpy as np
 
 	**Load Image**
-image_path = r"A:\computer_Vision\56.jpg"
+image_path = r"A:\computer_Vision\54.jpg"
 image = cv2.imread(image_path)
 if image is None:
     print("Error: Image not found.")
@@ -921,5 +921,7 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
-![Alt Text](images/56.jg)
+![Alt Text](images/54.jg)
+
+
 
