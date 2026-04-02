@@ -55,7 +55,7 @@ In OpenCV, face detection is commonly performed using Haar Cascade classifiers. 
 **Ans** Here is the some code to loading an image>:
 
 
-Input):-
+**Code Input**
 
 import cv2
 
@@ -89,7 +89,7 @@ cv2.destroyAllWindows()
 **Ans** Here is the full code of converting an image into gray scale>:
 
 
-** Code Input**
+**Code Input**
 
 
 import cv2
@@ -188,26 +188,26 @@ import cv2
 import numpy as np
 
 
-			**Load Image**
+			*Load Image*
 image_path = r"A:\computer_Vision\56.jpg"
 image = cv2.imread(image_path)
 if image is None:
     print("Error: Image not found.")
     exit()
-			**Resize Image**
+			*Resize Image*
 image = cv2.resize(image, (500, 500))  # Resize to 500x500
 
 
-			**Convert to Gray**
+			*Convert to Gray*
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 
-			**Load Haar Cascades**
+			*Load Haar Cascades*
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
 eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_eye.xml")
 
 
-			**Detect Faces and Eyes**
+			*Detect Faces and Eyes*
 faces = face_cascade.detectMultiScale(
     gray,
     scaleFactor=1.05,  *More sensitive for faces*
@@ -216,18 +216,18 @@ faces = face_cascade.detectMultiScale(
 )
 
 
-			**through all faces**
+			*through all faces*
 for (x, y, w, h) in faces:
     **Draw rectangle around face (Blue) with thin border**
     cv2.rectangle(image, (x, y), (x+w, y+h), (255, 0, 0), 1)    
 
 
-*Region of interest for eyes*
+			*Region of interest for eyes*
     roi_gray = gray[y:y+h, x:x+w]
     roi_color = image[y:y+h, x:x+w]
 
     
-    **Detect Eyes inside this face:**
+    *Detect Eyes inside this face:*
     eyes = eye_cascade.detectMultiScale(
         roi_gray,
         scaleFactor=1.03,  *Even smaller step for more accuracy*
@@ -235,15 +235,15 @@ for (x, y, w, h) in faces:
         minSize=(8, 8)      *Smaller size to catch tiny eyes)*
 
 
-    **Loop through all detected eyes**
+    *Loop through all detected eyes*
     for (ex, ey, ew, eh) in eyes:
 
 
-        **Draw rectangle around eyes (Pink) with thin border.**
+        *Draw rectangle around eyes (Pink) with thin border.*
         cv2.rectangle(roi_color, (ex, ey), (ex+ew, ey+eh), (255, 0, 255), 1)
 
 
-**Display Image**
+			*Display Image*
 cv2.imshow("roi:",roi_color)
 cv2.imshow("Face and Eyes Detection:", image)
 cv2.waitKey(0)
