@@ -333,7 +333,7 @@ img = np.ones((512, 512, 3), np.uint8) * 255
 cv2.waitKey(0)
 cv2.desttroyeAllWindows.
 ```
-#![Alt Text](images/602.jpg)
+![Alt Text](images/602.jpg)
 
 
 
@@ -393,7 +393,7 @@ cv2.destroyAllWindows()
 ```
 
 #uotput result:
-#![Alt Text](images/902.jpg)
+![Alt Text](images/902.jpg)
 
 
 
@@ -593,6 +593,168 @@ cv2.imshow("Threshold Image", thresh)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+```
+
+**This is the output**
+
+
+![Alt Text](images/shapes.png)
 
 
 
+
+# Offline Color Picker
+
+```python
+import cv2
+import numpy as np
+
+def cross(x):
+    pass
+
+img = np.zeros((300, 512, 3), np.uint8)
+cv2.namedWindow("Color picker")
+
+s1 = "0:OFF 1:ON"
+cv2.createTrackbar(s1, "Color picker", 0, 1, cross)
+
+cv2.createTrackbar("R", "Color picker", 0, 255, cross)
+cv2.createTrackbar("G", "Color picker", 0, 255, cross)
+cv2.createTrackbar("B", "Color picker", 0, 255, cross)
+
+while True:
+    cv2.imshow("Color picker", img)
+
+    if cv2.waitKey(1) & 0xFF == 27:
+        break
+
+    s = cv2.getTrackbarPos(s1, "Color picker")
+    r = cv2.getTrackbarPos("R", "Color picker")
+    g = cv2.getTrackbarPos("G", "Color picker")
+    b = cv2.getTrackbarPos("B", "Color picker")
+
+    if s == 0:
+        img[:] = 0
+    else:
+        img[:] = [b, g, r]
+
+cv2.destroyAllWindows()
+```
+
+
+
+
+
+# Detecting Objects using Webcam (OpenCV)
+## Live Detection
+
+```python
+import cv2
+import numpy as np
+
+def nothing(x):
+    pass
+
+cap = cv2.VideoCapture(0)
+
+cv2.namedWindow("Color Adjustments", cv2.WINDOW_NORMAL)
+cv2.resizeWindow("Color Adjustments", 300, 300)
+
+# Trackbars
+cv2.createTrackbar("Lower_H", "Color Adjustments", 0, 179, nothing)
+cv2.createTrackbar("Lower_S", "Color Adjustments", 48, 255, nothing)
+cv2.createTrackbar("Lower_V", "Color Adjustments", 80, 255, nothing)
+
+cv2.createTrackbar("Upper_H", "Color Adjustments", 20, 179, nothing)
+cv2.createTrackbar("Upper_S", "Color Adjustments", 255, 255, nothing)
+cv2.createTrackbar("Upper_V", "Color Adjustments", 255, 255, nothing)
+
+cv2.createTrackbar("Thresh", "Color Adjustments", 200, 255, nothing)
+
+while True:
+    ret, frame = cap.read()
+    if not ret:
+        break
+
+    frame = cv2.resize(frame, (250, 250))
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+
+    l_h = cv2.getTrackbarPos("Lower_H", "Color Adjustments")
+    l_s = cv2.getTrackbarPos("Lower_S", "Color Adjustments")
+    l_v = cv2.getTrackbarPos("Lower_V", "Color Adjustments")
+    u_h = cv2.getTrackbarPos("Upper_H", "Color Adjustments")
+    u_s = cv2.getTrackbarPos("Upper_S", "Color Adjustments")
+    u_v = cv2.getTrackbarPos("Upper_V", "Color Adjustments")
+    thresh_val = cv2.getTrackbarPos("Thresh", "Color Adjustments")
+
+    lower_bound = np.array([l_h, l_s, l_v])
+    upper_bound = np.array([u_h, u_s, u_v])
+
+    mask = cv2.inRange(hsv, lower_bound, upper_bound)
+    filtr = cv2.bitwise_and(frame, frame, mask=mask)
+
+    mask_inv = cv2.bitwise_not(mask)
+    _, thresh = cv2.threshold(mask_inv, thresh_val, 255, cv2.THRESH_BINARY)
+    dilate = cv2.dilate(thresh, (3, 3), iterations=2)
+
+    cnts, _ = cv2.findContours(dilate, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    result = frame.copy()
+
+    for c in cnts:
+        if cv2.contourArea(c) > 1000:
+            epsilon = 0.0005 * cv2.arcLength(c, True)
+            approx = cv2.approxPolyDP(c, epsilon, True)
+            hull = cv2.convexHull(approx)
+
+            cv2.drawContours(result, [c], -1, (255, 0, 0), 1)
+            cv2.drawContours(result, [hull], -1, (255, 0, 255), 1)
+
+    cv2.imshow("Mask", cv2.resize(mask, (250, 250)))
+    cv2.imshow("Filtered", cv2.resize(filtr, (250, 250)))
+    cv2.imshow("Threshold", cv2.resize(thresh, (250, 250)))
+    cv2.imshow("Result", cv2.resize(result, (250, 250)))
+
+    if cv2.waitKey(1) & 0xFF == 27:
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+```
+
+
+
+
+# Drawing on Video (OpenCV)
+
+```python
+import cv2
+import datetime
+
+cap = cv2.VideoCapture("video.mp4")
+
+print("Width =", cap.get(3))
+print("Height =", cap.get(4))
+
+while cap.isOpened():
+    ret, frame = cap.read()
+
+    if ret:
+        font = cv2.FONT_HERSHEY_SCRIPT_COMPLEX
+
+        text = "Height: " + str(int(cap.get(4))) + "  Width: " + str(int(cap.get(3)))
+        cv2.putText(frame, text, (10, 30), font, 1, (248, 117, 5), 2, cv2.LINE_AA)
+
+        date_data = "Date: " + datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        cv2.putText(frame, date_data, (10, 70), font, 1, (247, 238, 5), 2, cv2.LINE_AA)
+
+        frame = cv2.resize(frame, (500, 600))
+        cv2.imshow("Frame", frame)
+
+        if cv2.waitKey(10) & 0xFF == ord('f'):
+            break
+    else:
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+```
