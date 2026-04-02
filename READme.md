@@ -271,7 +271,7 @@ These are useful for:
 Drawing functions are used to draw shapes and text on images.  
 They modify the image directly.
 
-# Samole Of Code.
+# Sample Of Code.
 ```python
 import cv2
 import numpy as np
@@ -332,11 +332,65 @@ img = np.ones((512, 512, 3), np.uint8) * 255
 **Last lines of code which are the most importat**
 cv2.waitKey(0)
 cv2.desttroyeAllWindows.
+```
+#![Alt Text](images/602.jpg)
 
 
 
+# Removing Background in an Image using OpenCV
+
+## Code
+
+```python
+import cv2
+import numpy as np
 
 
+		**Load the main image**
+img = cv2.imread(r"A:\computer_Vision\920.jpg")
+
+
+**Resizing the image**
+img = cv2.resize(img, (400, 400))
+
+
+		**Convert image to HSV**
+hsv_original = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+
+
+		**Load ROI image**
+roi = cv2.imread(r"A:\computer_Vision\bgr.jpg")
+roi = cv2.resize(roi, (100, 100))
+hsv_roi = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
+
+
+**Create histogram of ROI**
+roi_hist = cv2.calcHist([hsv_roi], [0, 1], None, [180, 256], [0, 180, 0, 256])
+cv2.normalize(roi_hist, roi_hist, 0, 255, cv2.NORM_MINMAX)
+
+# Backprojection to create mask
+mask = cv2.calcBackProject([hsv_original], [0, 1], roi_hist, [0, 180, 0, 256], 1)
+
+# Filter and remove noise
+kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+mask = cv2.filter2D(mask, -1, kernel)
+_, mask = cv2.threshold(mask, 200, 255, cv2.THRESH_BINARY)
+
+# Merge mask with original image
+mask_3ch = cv2.merge([mask, mask, mask])
+result = cv2.bitwise_and(img, mask_3ch)
+
+# Display results
+cv2.imshow("Original Image", img)
+cv2.imshow("HSV Original Image", hsv_original)
+cv2.imshow("ROI Image", roi)
+cv2.imshow("HSV ROI Image", hsv_roi)
+cv2.imshow("Mask Image", mask)
+cv2.imshow("Result Image", result)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
 
 
 
@@ -346,45 +400,6 @@ cv2.desttroyeAllWindows.
 
 # 🟦 3D Mesh — Overview & Open3D Guide
 
-A **3D Mesh** is the structural backbone of a 3D model.  
-It can be created from **point clouds** or designed directly in 3D modeling software.  
-
-A 3D Mesh is composed of:
-
-- **Vertices**: Points in 3D space  
-- **Edges**: Lines connecting vertices  
-- **Faces**: Surfaces defined by edges (usually triangles or quads)  
-
-These components together define the **height, width, and depth** of a 3D object.
-
----
-
-## 🚀 Applications of 3D Mesh
-
-3D Meshes are widely used in:
-
-- **Computer Graphics & Animation**  
-- **3D Printing**  
-- **Virtual Reality (VR) & Augmented Reality (AR)**  
-- **Simulation & Gaming**  
-- **Medical Imaging & Scientific Visualization**  
-- **Robotics & CAD Modeling**
-
----
-
-## 📁 Common 3D Mesh File Formats
-
-| Format | Description |
-|--------|-------------|
-| **.ply** | Polygon File Format (supports point cloud + mesh) |
-| **.stl** | Standard for 3D printing (triangular mesh) |
-| **.obj** | Wavefront OBJ (vertices, faces, textures) |
-| **.off** | Object File Format (geometry representation) |
-| **.gltf / .glb** | Modern format for 3D scenes & models with textures |
-
----
-
-## 🔧 Load & Visualize a 3D Mesh with Open3D
 
 ```python
 import open3d as o3d
