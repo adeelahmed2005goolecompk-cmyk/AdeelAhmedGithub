@@ -186,6 +186,8 @@ Ans):- Here is the full code of detecting faces and eyes>
 ```python
 import cv2
 import numpy as np
+
+
 			**Load Image**
 image_path = r"A:\computer_Vision\56.jpg"
 image = cv2.imread(image_path)
@@ -194,6 +196,8 @@ if image is None:
     exit()
 			**Resize Image**
 image = cv2.resize(image, (500, 500))  # Resize to 500x500
+
+
 			**Convert to Gray**
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
