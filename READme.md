@@ -32,13 +32,15 @@
 
 
 
-** Introduction):-
+# Introduction):-
 
 
-So today we read about Face detection in an image is a computer vision technique used to locate and identify human faces within a picture. It works by analyzing visual features such as edges, shapes, and patterns that resemble facial structures. In OpenCV, face detection is commonly performed using Haar Cascade classifiers. This technique is widely used in security systems, cameras, and biometric applications.
+So today we read about Face detection in an image is a computer vision technique used to locate and identify human faces within a picture. It works by analyzing visual features such as edges, shapes, and patterns that resemble facial structures.
+
+In OpenCV, face detection is commonly performed using Haar Cascade classifiers. This technique is widely used in security systems, cameras, and biometric applications.
 
 
-** Here we starts some questions):-
+# Here we starts some questions):-
 
 
 Qno1):- What is the ‘Haarcascade file’?
