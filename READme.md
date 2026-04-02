@@ -32,7 +32,7 @@
 
 
 
-# Introduction):-
+# Introduction
 
 
 So today we read about Face detection in an image is a computer vision technique used to locate and identify human faces within a picture. It works by analyzing visual features such as edges, shapes, and patterns that resemble facial structures.
@@ -40,7 +40,7 @@ So today we read about Face detection in an image is a computer vision technique
 In OpenCV, face detection is commonly performed using Haar Cascade classifiers. This technique is widely used in security systems, cameras, and biometric applications.
 
 
-# Here we starts some questions):-
+# Here we starts some questions
 
 
 **Q No 1**  What is the ‘Haarcascade file’?
@@ -63,13 +63,13 @@ import cv2
 import numpy as np
 
 
- ----------Load Image----------
+**Load Image**
 
  
 image = cv2.imread(r"A:\computer_Vision\56.jpg")
 
 
- ----------Display Image----------
+**Display Image**
 
  
 cv2.imshow("Original Image", image)
@@ -81,15 +81,15 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 
 
-Result):-
+**Result**
 	 	
-Qno3):- What is the code of converting an image in the gray scale?
+**Qno3** What is the code of converting an image in the gray scale?
 
 
-Ans):- Here is the full code of converting an image into gray scale>:
+**Ans** Here is the full code of converting an image into gray scale>:
 
 
-Input):-
+** Code Input**
 
 
 import cv2
@@ -98,63 +98,87 @@ import cv2
 import numpy as np
 
 
-# ----------Load Image----------
+**Load Image**
 
 
 image = cv2.imread(r"A:\computer_Vision\56.jpg")
 
 
-# ----------Convert to Gray----------
+**Convert to Gray**
 
 
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 
-# ----------Display Images----------
+**Display Images**
 cv2.imshow("Original Image", image)
 cv2.imshow("Gray Scale Image", gray)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-Result):-
+
 	 
-Qno4):- Write full code of detecting faces in an image?
-Ans):- Here is the full code of detecting faces in an image >:
-Input):-
+**Qno4** Write full code of detecting faces in an image?
+
+
+**Ans** Here is the full code of detecting faces in an image >
+
+
+**Input**
+
+
 import cv2
 import numpy as np
- ----------Load Image----------
+
+
+**Load Image**
 image = cv2.imread(r"A:\computer_Vision\56.jpg")
 if image is None:
 print("Error: Image not found. Check file path.")
     exit()
- ----------Resize Image----------
+
+	
+ **Resize Image**
 image = cv2.resize(image, (400, 400))
- ----------Convert to Grayscale----------
+
+
+ **Convert to Grayscale**
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
- ----------Load Haar Cascade----------
+
+
+ **Load Haar Cascade**
 face = cv2.CascadeClassifier(
  cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
- ----------Detect Faces----------
+
+ 
+ **Detect Faces**
 faces = face.detectMultiScale(
     gray,
     scaleFactor=1.1,
     minNeighbors=3,
     minSize=(20, 20))
- ----------Copy image for face detection result----------
+
+	
+ **Copy image for face detection result**
 face_img = image.copy()
- ----------Draw Rectangles----------
+
+
+**Draw Rectangles**
 for (x, y, w, h) in faces:
     cv2.rectangle(face_img, (x, y), (x + w, y + h), (255, 0, 0), 2)
-----------Display Images----------
+
+
+**Display Images**
 cv2.imshow("Original Image :", image)
 cv2.imshow("Gray Image :", gray)
 cv2.imshow("Face Detected Image :", face_img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-Result):-
+
 	 
-Qno5):- What is the full code of detecting eyes and faces?
-Ans):- Here is the full code of detecting faces and eyes>:
+**Qno5** What is the full code of detecting eyes and faces?
+
+
+Ans):- Here is the full code of detecting faces and eyes>
 
 
 ## Sample code 
@@ -162,44 +186,60 @@ Ans):- Here is the full code of detecting faces and eyes>:
 ```python
 import cv2
 import numpy as np
-# ----------Load Image----------
+			**Load Image**
 image_path = r"A:\computer_Vision\56.jpg"
 image = cv2.imread(image_path)
 if image is None:
     print("Error: Image not found.")
     exit()
-# ----------Resize Image----------
+			**Resize Image**
 image = cv2.resize(image, (500, 500))  # Resize to 500x500
-# ----------Convert to Gray----------
+			**Convert to Gray**
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-# ----------Load Haar Cascades----------
+
+
+			**Load Haar Cascades**
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
 eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_eye.xml")
-# ----------Detect Faces and Eyes:----------
+
+
+			**Detect Faces and Eyes**
 faces = face_cascade.detectMultiScale(
     gray,
-    scaleFactor=1.05,  # More sensitive for faces
+    scaleFactor=1.05,  *More sensitive for faces*
     minNeighbors=4,
     minSize=(30, 30)
 )
-# Loop through all faces
+
+
+			**through all faces**
 for (x, y, w, h) in faces:
-    # Draw rectangle around face (Blue) with thin border
+    **Draw rectangle around face (Blue) with thin border**
     cv2.rectangle(image, (x, y), (x+w, y+h), (255, 0, 0), 1)    
-    # Region of interest for eyes
+
+
+*Region of interest for eyes*
     roi_gray = gray[y:y+h, x:x+w]
-    roi_color = image[y:y+h, x:x+w]    
-    # ----------Detect Eyes inside this face:----------
+    roi_color = image[y:y+h, x:x+w]
+
+    
+    **Detect Eyes inside this face:**
     eyes = eye_cascade.detectMultiScale(
         roi_gray,
-        scaleFactor=1.03,  # Even smaller step for more accuracy
-        minNeighbors=2,     # Lower to detect additional eyes
-        minSize=(8, 8)      # Smaller size to catch tiny eyes)
-    # Loop through all detected eyes
+        scaleFactor=1.03,  *Even smaller step for more accuracy*
+        minNeighbors=2,     *Lower to detect additional eyes*
+        minSize=(8, 8)      *Smaller size to catch tiny eyes)*
+
+
+    **Loop through all detected eyes**
     for (ex, ey, ew, eh) in eyes:
-        # Draw rectangle around eyes (Pink) with thin border
+
+
+        **Draw rectangle around eyes (Pink) with thin border.**
         cv2.rectangle(roi_color, (ex, ey), (ex+ew, ey+eh), (255, 0, 255), 1)
-# ----------Display Image----------
+
+
+**Display Image**
 cv2.imshow("roi:",roi_color)
 cv2.imshow("Face and Eyes Detection:", image)
 cv2.waitKey(0)
