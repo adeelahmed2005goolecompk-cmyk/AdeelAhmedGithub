@@ -43,16 +43,16 @@ In OpenCV, face detection is commonly performed using Haar Cascade classifiers. 
 # Here we starts some questions):-
 
 
-Qno1):- What is the ‘Haarcascade file’?
-Ans):- The ‘HaarCascade file’ is a classifier file in which it is defined what a face looks like, including its parameters and features. All possible details about the face are available in that file. It is a part of computer vision.
-Qno2):- What is the code of loading an image?
-Ans):- Here is the some code to loading an image>:
+**Q No 1**  What is the ‘Haarcascade file’?
+**Ans** The ‘HaarCascade file’ is a classifier file in which it is defined what a face looks like, including its parameters and features. All possible details about the face are available in that file. It is a part of computer vision.
+**Q No 2** What is the code of loading an image?
+**Ans** Here is the some code to loading an image>:
 Input):-
 import cv2
 import numpy as np
-# ----------Load Image----------
+ ----------Load Image----------
 image = cv2.imread(r"A:\computer_Vision\56.jpg")
-# ----------Display Image----------
+ ----------Display Image----------
 cv2.imshow("Original Image", image)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
