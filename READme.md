@@ -256,37 +256,84 @@ cv2.destroyAllWindows()
 
 
 
+# Drawing Functions in OpenCV
+
+## Introduction
+Drawing functions in OpenCV are used to create shapes on images or video frames.  
+They help to draw lines, rectangles, circles, ellipses, and text.
+
+These are useful for:
+- Highlighting objects  
+- Marking regions  
+- Visualizing results  
+
+---
+
+## Q1 What are Drawing Functions?
+Drawing functions are used to draw shapes and text on images.  
+They modify the image directly.
 
 
+```python
+import cv2
+import numpy as np
 
 
+img = cv2.imread("image.jpg")
+img = cv2.resize(img, (500, 500))
 
 
+cv2.imshow("Result", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 
 
+**performing the simple line code**
+img = cv2.line(img, (0, 0), (200, 200), (255, 55, 255), 2)
 
 
+**Drawing the arrowed line**
+img = cv2.arrowedLine(img, (0, 350), (255, 255), (255, 50, 200), 2)
 
 
+**Drawing the rectangle**
+img = cv2.rectangle(img, (384, 10), (620, 150), (255, 250, 200), 5)
 
 
+**Drawing a circle**
+img = cv2.circle(img, (270, 145), 100, (230, 130, 240), 2)
 
 
+**Now putting the text**
+font = cv2.FONT_HERSHEY_SCRIPT_SIMPLEX
+img = cv2.putText(
+    img,
+    "SHAMEER...",
+    (20, 500),
+    font,
+    2,
+    (130, 255, 110),
+    2,
+    cv2.LINE_AA
+)
 
 
+**Drawing the ellips**
+img = cv2.ellipse(img, (320, 240), (110, 140), 0, 0, 360, (255, 226, 120), 4)
 
 
+**Creating a full black image**
+import numpy as np
+img = np.zeros((512, 512, 3), np.uint8)
 
 
+**Creating a full white image**
+img = np.ones((512, 512, 3), np.uint8) * 255
 
 
-
-
-
-
-
-
-
+**Last lines of code which are the most importat**
+cv2.waitKey(0)
+cv2.desttroyeAllWindows.
 
 
 
