@@ -29,7 +29,7 @@
 ---
 
 # 🟦 Hello world program
-![Alt Text](images/one.jpg)
+
 
 Face and eyes Detection On Image.
 		Introduction):-
@@ -71,30 +71,30 @@ Ans):- Here is the full code of detecting faces in an image >:
 Input):-
 import cv2
 import numpy as np
-# ----------Load Image----------
+ ----------Load Image----------
 image = cv2.imread(r"A:\computer_Vision\56.jpg")
 if image is None:
 print("Error: Image not found. Check file path.")
     exit()
-# ----------Resize Image----------
+ ----------Resize Image----------
 image = cv2.resize(image, (400, 400))
-# ----------Convert to Grayscale----------
+ ----------Convert to Grayscale----------
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-# ----------Load Haar Cascade----------
+ ----------Load Haar Cascade----------
 face = cv2.CascadeClassifier(
  cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
-# ----------Detect Faces----------
+ ----------Detect Faces----------
 faces = face.detectMultiScale(
     gray,
     scaleFactor=1.1,
     minNeighbors=3,
     minSize=(20, 20))
-# ----------Copy image for face detection result----------
+ ----------Copy image for face detection result----------
 face_img = image.copy()
-# ----------Draw Rectangles----------
+ ----------Draw Rectangles----------
 for (x, y, w, h) in faces:
     cv2.rectangle(face_img, (x, y), (x + w, y + h), (255, 0, 0), 2)
-# ----------Display Images----------
+----------Display Images----------
 cv2.imshow("Original Image :", image)
 cv2.imshow("Gray Image :", gray)
 cv2.imshow("Face Detected Image :", face_img)
@@ -155,6 +155,54 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 ---
+
+![Alt Text](images/one.jpg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # 🟦 3D Mesh — Overview & Open3D Guide
 
