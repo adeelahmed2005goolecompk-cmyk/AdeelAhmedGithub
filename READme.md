@@ -1,5 +1,5 @@
-# SLAM – Simultaneous Localization and Mapping
-# Open3D – Complete Guide with Examples
+# Python Basics to Advance complete course
+# This github helps in learning basics of python basics and its advance concept
 ---
 
 ## 📌 Table of Contents
