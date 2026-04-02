@@ -52,7 +52,7 @@ In OpenCV, face detection is commonly performed using Haar Cascade classifiers. 
 **Q No 2** What is the code of loading an image?
 
 
-**Ans** Here is the some code to loading an image>:
+**Ans** Here is the some code to loading an image>
 
 
 **Code Input**
@@ -80,8 +80,6 @@ cv2.waitKey(0)
 
 cv2.destroyAllWindows()
 
-
-**Result**
 	 	
 **Qno3** What is the code of converting an image in the gray scale?
 
@@ -123,7 +121,7 @@ cv2.destroyAllWindows()
 **Ans** Here is the full code of detecting faces in an image >
 
 
-**Input**
+**Input Code**
 
 
 import cv2
@@ -178,7 +176,7 @@ cv2.destroyAllWindows()
 **Qno5** What is the full code of detecting eyes and faces?
 
 
-Ans):- Here is the full code of detecting faces and eyes>
+**Ans** Here is the full code of detecting faces and eyes>
 
 
 ## Sample code 
@@ -273,7 +271,7 @@ These are useful for:
 Drawing functions are used to draw shapes and text on images.  
 They modify the image directly.
 
-
+# Samole Of Code.
 ```python
 import cv2
 import numpy as np
