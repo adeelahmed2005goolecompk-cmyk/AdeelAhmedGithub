@@ -1457,8 +1457,7 @@ cv2.destroyAllWindows()
 # THIS IS THE OUTPUT OF FIRST CODE:
 
 
-![Alt Text]()
-
+![Alt Text](images/chess_1.png)
 
 
 # Method 2: Hough Lines Probabilistic
@@ -1502,7 +1501,8 @@ cv2.HoughLinesP() → Detect line segments
 ```
 
 
-
+# THIS IS THE OUTPUT OF SECONDE CODE:
+![Alt Text]()
 
 
 
