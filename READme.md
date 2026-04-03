@@ -1183,4 +1183,195 @@ cv2.destroyAllWindows()
 # THIS IS THE OUTOUT:
 
 
+![Alt Text](images/hand.jpg)
+
+
+# Hough Circle Transformation (OpenCV)
+***Introduction***
+
+The Hough Circle Transform is an image processing technique used to detect circular shapes in an image.
+It works by converting edge points into a parameter space to find circle centers and radii.
+
+This method is very useful when:
+
+Circles are partially hidden
+Images contain noise
+
+In OpenCV, it is implemented using:
+
+cv2.HoughCircles()
+**Q1** What is Hough Circle Transformation?
+
+**Ans** The Hough Circle Transform is used to detect circles in an image by identifying their center and radius using edge detection.
+
+***Code to Load an Image***
+
+```python
+import cv2
+import numpy as np
+
+
+img = cv2.imread(r"A:\computer_Vision\collor_balls.jpg")
+img = cv2.resize(img, (250, 250))
+img2 = img.copy()
+
+
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+gray = cv2.medianBlur(gray, 5)
+
+
+cv2.imshow("result:", img2)
+cv2.imshow("gray:", gray)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+***Parameters of Hough Circle Detection:***
+
+
+*(image, method, dp, minDist, param1, param2, minRadius, maxRadius)*
+
+
+**Q4** What is dp?
+
+
+**Ans**  dp means Inverse ratio of resolution (Distance per pixel between accumulator and image resolution).
+
+
+***Code to Draw Detected Circles***
+circles = cv2.HoughCircles(gray, cv2.HOUGH_GRADIENT, 1, 20,
+                           param1=50, param2=30,
+                           minRadius=0, maxRadius=0)
+
+
+data = np.uint16(np.around(circles))
+
+
+for (x, y, r) in data[0, :]:
+    cv2.circle(img2, (x, y), r, (50, 10, 50), 3)
+    cv2.circle(img2, (x, y), 2, (123, 53, 234), -1)
+```
+
+
+***Circle Detection Using Webcam***
+
+
+```python
+import cv2
+import numpy as np
+
+
+cap = cv2.VideoCapture(0)
+
+
+while True:
+    ret, img = cap.read()
+    if not ret:
+        break
+
+    img2 = img.copy()
+
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    gray = cv2.medianBlur(gray, 5)
+
+    circles = cv2.HoughCircles(gray, cv2.HOUGH_GRADIENT, 1, 50,
+                               param1=50, param2=30,
+                               minRadius=10, maxRadius=0)
+
+    if circles is not None:
+        data = np.uint16(np.around(circles))
+
+        for (x, y, r) in data[0, :]:
+            cv2.circle(img2, (x, y), r, (50, 10, 50), 3)
+            cv2.circle(img2, (x, y), 2, (123, 53, 234), -1)
+
+    cv2.imshow("Detected Circles", img2)
+
+    if cv2.waitKey(25) & 0xFF == ord("n"):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+```
+
+
+***Full Code (Two Methods)***
+
+
+***Detecting Circle By Hough***
+
+
+```python
+import cv2
+import numpy as np
+
+
+**Method 1: Image Detection**
+img = cv2.imread(r"A:\computer_Vision\collor_balls.jpg")
+img = cv2.resize(img, (250, 250))
+img2 = img.copy()
+
+
+# Converting an image gray:
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+gray = cv2.medianBlur(gray, 5)
+
+
+***Drawing here circles***
+circles = cv2.HoughCircles(gray, cv2.HOUGH_GRADIENT, 1, 20,
+                           param1=50, param2=30,
+                           minRadius=0, maxRadius=0)
+
+if circles is not None:
+    data = np.uint16(np.around(circles))
+    for (x, y, r) in data[0, :]:
+        cv2.circle(img2, (x, y), r, (50, 10, 50), 3)
+        cv2.circle(img2, (x, y), 2, (123, 53, 234), -1)
+
+cv2.imshow("result:", img2)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+
+# THIS IS THE OUTPUT:
 ![Alt Text]()
+
+
+# Method 2: Webcam Detection
+
+
+```python
+import cv2
+import numpy as np
+
+
+cap = cv2.VideoCapture(0)
+
+while True:
+    ret, img = cap.read()
+    if not ret:
+        break
+
+    img2 = img.copy()
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    gray = cv2.medianBlur(gray, 5)
+
+    circles = cv2.HoughCircles(gray, cv2.HOUGH_GRADIENT, 1, 50,
+                               param1=50, param2=30,
+                               minRadius=10, maxRadius=0)
+
+    if circles is not None:
+        data = np.uint16(np.around(circles))
+        for (x, y, r) in data[0, :]:
+            cv2.circle(img2, (x, y), r, (50, 10, 50), 3)
+            cv2.circle(img2, (x, y), 2, (123, 53, 234), -1)
+
+    cv2.imshow("Detected Circles", img2)
+
+    if cv2.waitKey(25) & 0xFF == ord("n"):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+```
