@@ -1,5 +1,5 @@
 # Python Basics to Advance complete course
-# This github helps in learning basics of python basics and its advance concept
+# This github helps in learning basics of python and its advance concept
 ---
 
 ## 📌 Table of Contents
@@ -921,7 +921,7 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
-![Alt Text](images/54.jg)
+
 
 
 
