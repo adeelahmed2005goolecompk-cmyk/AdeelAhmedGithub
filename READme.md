@@ -1375,3 +1375,149 @@ while True:
 cap.release()
 cv2.destroyAllWindows()
 ```
+
+
+# Hough Transformation Lines (OpenCV)
+  ***Introduction***
+
+The Hough Transform is used in image processing to detect shapes like lines, circles, and ellipses.
+
+
+It works by converting image points into a parameter space, where shapes are detected as peaks.
+This method works well even when:
+
+
+Edges are broken
+Images are noisy
+**Q No 1 What is Hough Transformation?**
+
+**Ans** The Hough Transform detects shapes (like lines or circles) by mapping image points into parameter space and finding peaks.
+
+***Steps of Hough Line Detection***
+
+
+***Convert image to grayscale***
+
+
+***Detect edges (Canny)***
+
+
+***Apply Hough Transform***
+
+
+***Load Image + Edge Detection***
+
+
+***Method 1: Hough Lines***
+
+
+```python
+
+
+import cv2
+import numpy as np
+
+
+img = cv2.imread(r"A:\computer_Vision\chess_1.png")
+img = cv2.resize(img, (250, 250))
+
+
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+edges = cv2.Canny(gray, 20, 250)
+
+
+lines = cv2.HoughLines(edges, 1, np.pi/180, 200)
+
+*Here we start the loop:
+
+
+for line in lines:
+    rho, theta = line[0]
+    a = np.cos(theta)
+    b = np.sin(theta)
+    x0 = a * rho
+    y0 = b * rho
+    x1 = int(x0 + 1000 * (-b))
+    y1 = int(y0 + 1000 * (a))
+    x2 = int(x0 - 1000 * (-b))
+    y2 = int(y0 - 1000 * (a))
+
+
+    if y1 < 100 and y2 < 100:
+        cv2.line(img, (x1, y1), (x2, y2), (255, 0, 255), 2)
+
+
+cv2.imshow("Edges", edges)
+cv2.imshow("Lines", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+
+# THIS IS THE OUTPUT OF FIRST CODE:
+
+
+![Alt Text]()
+
+
+
+# Method 2: Hough Lines Probabilistic
+
+```python code:
+import cv2
+import numpy as np
+
+
+img = cv2.imread(r"A:\computer_Vision\square.jpg")
+img = cv2.resize(img, (250, 250))
+
+
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+edges = cv2.Canny(gray, 20, 250)
+
+
+lines = cv2.HoughLinesP(edges, 1, np.pi/180, 100,
+                        minLineLength=8, maxLineGap=100)
+
+
+#Here we start a loop:
+
+
+for line in lines:
+    x1, y1, x2, y2 = line[0]
+    cv2.line(img, (x1, y1), (x2, y2), (100, 200, 125), 2)
+
+
+cv2.imshow("Edges", edges)
+cv2.imshow("Lines", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+#Functions Used
+
+
+cv2.HoughLines() → Detect infinite lines
+cv2.HoughLinesP() → Detect line segments
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
