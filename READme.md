@@ -1183,4 +1183,4 @@ cv2.destroyAllWindows()
 # THIS IS THE OUTOUT:
 
 
-![Alt Tex](images/hand.jpg)
+![Alt Text]()
