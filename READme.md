@@ -1502,7 +1502,10 @@ cv2.HoughLinesP() → Detect line segments
 
 
 # THIS IS THE OUTPUT OF SECONDE CODE:
-![Alt Text]()
+
+
+![Alt Text](images/square.jpg)
+
 
 
 
