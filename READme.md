@@ -1874,7 +1874,12 @@ plt.title("Histogram with Shapes")
 plt.show()
 ```
 
+# HERE IN THE CODE WE HAVE NOT USING AN ANY IMAGE:
+
+
+
 ***Method 3: Color Histogram:***
+
 
 ```python code:
 
@@ -1894,6 +1899,12 @@ plt.hist(r.ravel(), 256, [0,256])
 plt.title("Color Histogram")
 plt.show()
 ```
+
+
+# Here IS THIS IMAGE USED:
+
+
+![Alt Text](images/919.jpg)
 
 
 
@@ -1934,6 +1945,12 @@ cv2.destroyAllWindows()
 ```
 
 
+# HERE IS THIS IMAGE USED:
+
+
+![Alt Text](images/919.jp)
+
+
 ***Method 5: CLAHE (Advanced):***
 
 
@@ -1961,6 +1978,12 @@ plt.show()
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
+
+
+# HERE IS THIS IMAGE USED:
+
+
+![Alt Text](images/54.jpg)
 
 
 **Q No 1** What is CLAHE?
