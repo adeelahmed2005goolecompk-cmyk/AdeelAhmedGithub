@@ -1074,3 +1074,113 @@ cv2.destroyAllWindows()
 
 # This is the output result:
 
+
+![Alt Tex](images/car.jpg)
+
+
+
+# Hand Detection (OpenCV)
+
+
+## Introduction
+Hand detection is a computer vision technique used to detect hands in images or videos.
+
+
+---
+
+
+## Q1: What is Hand Detection?
+Hand detection is the process of detecting hands from an image or live camera.
+
+
+---
+
+
+## Sample Code:
+
+
+```python
+
+
+import cv2
+import numpy as np
+import os
+import sys
+
+
+#Image path
+path = "hand.jpg"
+
+#Check file
+if not os.path.exists(path):
+    print("File not found!")
+    sys.exit()
+
+img = cv2.imread(path)
+
+if img is None:
+    print("Failed to load image!")
+    sys.exit()
+
+# Resize
+img = cv2.resize(img, (250, 250))
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# Blur
+blur = cv2.medianBlur(gray, 5)
+
+# Threshold
+_, thresh = cv2.threshold(blur, 80, 255, cv2.THRESH_BINARY_INV)
+
+# Find contours
+cnts, hier = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+cv2.drawContours(img, cnts, -1, (180, 185, 0), 2)
+
+# Convex Hull
+for c in cnts:
+    epsilon = 0.0001 * cv2.arcLength(c, True)
+    data = cv2.approxPolyDP(c, epsilon, True)
+    hull = cv2.convexHull(data)
+    cv2.drawContours(img, [c], -1, (50, 50, 100), 2)
+    cv2.drawContours(img, [hull], -1, (212, 234, 234), 2)
+
+# Convexity Defects
+hull2 = cv2.convexHull(cnts[0], returnPoints=False)
+defect = cv2.convexityDefects(cnts[0], hull2)
+
+if defect is not None:
+    for i in range(defect.shape[0]):
+        s, e, f, d = defect[i, 0]
+        start = tuple(cnts[0][s][0])
+        end = tuple(cnts[0][e][0])
+        far = tuple(cnts[0][f][0])
+        cv2.line(img, start, end, (255, 0, 0), 2)
+        cv2.circle(img, far, 5, (0, 0, 255), -1)
+
+# Extreme Points
+c_max = max(cnts, key=cv2.contourArea)
+
+extLeft  = tuple(c_max[c_max[:, :, 0].argmin()][0])
+extRight = tuple(c_max[c_max[:, :, 0].argmax()][0])
+extTop   = tuple(c_max[c_max[:, :, 1].argmin()][0])
+extBot   = tuple(c_max[c_max[:, :, 1].argmax()][0])
+
+cv2.circle(img, extLeft , 8, (255, 0, 255), -1)
+cv2.circle(img, extRight, 8, (0, 125, 255), -1)
+cv2.circle(img, extTop  , 8, (255, 10, 0), -1)
+cv2.circle(img, extBot  , 8, (19, 152, 152), -1)
+
+# Display
+cv2.imshow("Hand Detection", img)
+cv2.imshow("Gray", gray)
+cv2.imshow("Threshold", thresh)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+
+# THIS IS THE OUTOUT:
+
+
+![Alt Tex](images/hand.jpg)
