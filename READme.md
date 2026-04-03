@@ -1604,7 +1604,7 @@ cv2.destroyAllWindows()
 
 # THIS IS THE RESULT OF YOUR CODE:
 
-![Alt Text](images/919.jpg)
+![Alt Text]()
 
 
 
@@ -1695,7 +1695,3 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
-![Alt Text](images/pic_1.jpg)
-
-
-![Alt Text](images/pic_2.jpg)
