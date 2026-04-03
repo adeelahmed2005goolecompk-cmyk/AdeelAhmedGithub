@@ -1564,7 +1564,7 @@ import cv2
 import numpy as np
 
 # Load original image
-original_image = cv2.imread(r"A:\computer_Vision\919.jpg")
+original_image = cv2.imread(r"A:\computer_Vision\534.jpg")
 original_image = cv2.resize(original_image, (250, 250))
 
 # Convert to HSV
@@ -1604,7 +1604,8 @@ cv2.destroyAllWindows()
 
 # THIS IS THE RESULT OF YOUR CODE:
 
-![Alt Text]()
+![Alt Text](images/534.jpg)
+
 
 
 
@@ -1695,3 +1696,5 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
+
+![Alt Text]()
