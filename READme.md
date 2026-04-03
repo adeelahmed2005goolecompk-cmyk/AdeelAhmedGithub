@@ -1004,3 +1004,71 @@ cv2.destroyAllWindows()
 
 
 
+# GrabCut Algorithm (Background Removal)
+
+## Introduction
+GrabCut is an advanced image segmentation algorithm used to separate the foreground object from the background.  
+It works using Gaussian Mixture Models (GMM) and graph cut optimization.
+
+The algorithm starts with a bounding box around the object and then refines the result automatically.
+
+**Applications:**
+- Background removal  
+- Object extraction  
+- Image editing  
+
+
+## Q1: What is GrabCut Algorithm?
+
+
+GrabCut is an image segmentation technique used to extract an object from its background.  
+It uses color information and graph cuts to improve object boundaries automatically.
+
+
+# Code Sample:
+
+
+```python
+
+
+import cv2
+import numpy as np
+
+***Load Image***
+img = cv2.imread("car.jpg")
+img = cv2.resize(img, (700, 500))
+
+***Create Mask***
+mask = np.zeros(img.shape[:2], np.uint8)
+
+***Background and Foreground Models***
+bgdModel = np.zeros((1, 65), np.float64)
+fgdModel = np.zeros((1, 65), np.float64)
+
+***Define Rectangle (x, y, width, height)***
+rect = (60, 60, 580, 380)
+
+***Apply GrabCut***
+cv2.grabCut(img, mask, rect, bgdModel, fgdModel, 7, cv2.GC_INIT_WITH_RECT)
+
+***Define Mask***
+mask2 = np.where(
+    (mask == cv2.GC_FGD) | (mask == cv2.GC_PR_FGD),
+    1, 0
+).astype('uint8')
+
+***Remove Noise***
+kernel = np.ones((3, 3), np.uint8)
+mask2 = cv2.morphologyEx(mask2, cv2.MORPH_CLOSE, kernel, iterations=3)
+mask2 = cv2.morphologyEx(mask2, cv2.MORPH_OPEN, kernel, iterations=2)
+
+***Apply Mask***
+result = img * mask2[:, :, np.newaxis]
+
+***Display Result***
+cv2.imshow("Result", result)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+
