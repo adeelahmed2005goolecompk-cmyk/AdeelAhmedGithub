@@ -1509,8 +1509,102 @@ cv2.HoughLinesP() → Detect line segments
 
 
 
+# Image Background Removal (OpenCV)
 
 
+  ***Introduction***
+
+
+Image background removal is a technique used to separate the main object from its background.
+
+
+It helps to:
+
+
+Improve image clarity
+Remove unwanted areas
+Make images more professional
+
+ 
+**Q No 1** What is Image Background Removal?
+
+
+**Ans**  It is the process of removing the background of an image while keeping only the important object.
+
+***Steps Used into the code***
+
+
+#No 1: ***Load image***
+
+
+#No 2:***Convert to HSV color space***
+
+
+#No 3:***Select ROI (Region of Interest)***
+
+
+#No 4:***Create histogram***
+
+
+#No 5:***Apply back projection***
+
+
+#No 6:***Remove noise***
+
+
+#No 7: ***Merge mask with image***
+
+
+***Sample of code***
+
+```pyhon
+
+
+import cv2
+import numpy as np
+
+# Load original image
+original_image = cv2.imread(r"A:\computer_Vision\919.jpg")
+original_image = cv2.resize(original_image, (250, 250))
+
+# Convert to HSV
+hsv_original = cv2.cvtColor(original_image, cv2.COLOR_BGR2HSV)
+
+# ROI (reference image)
+roi = cv2.imread(r"A:\computer_Vision\copy.jpg")
+hsv_roi = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
+
+# Histogram of ROI
+roi_hist = cv2.calcHist([hsv_roi], [0,1], None,
+                        [180, 256], [0, 180, 0, 256], 1)
+
+# Back projection
+mask = cv2.calcBackProject([hsv_original],
+                           [0, 1], roi_hist,
+                           [0, 180, 0, 256], 1)
+
+# Noise removal
+kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+mask = cv2.filter2D(mask, -1, kernel)
+_, mask = cv2.threshold(mask, 200, 255, cv2.THRESH_BINARY)
+
+# Merge mask
+mask = cv2.merge((mask, mask, mask))
+result = cv2.bitwise_or(original_image, mask)
+
+# Display
+cv2.imshow("Original", original_image)
+cv2.imshow("Mask", mask)
+cv2.imshow("Result", result)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+
+# THIS IS THE RESULT OF YOUR CODE:
+
+![Alt Text]()
 
 
 
