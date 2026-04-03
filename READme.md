@@ -1918,7 +1918,7 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
-img = cv2.imread(r"A:\computer_Vision\919.jpg")
+img = cv2.imread(r"A:\computer_Vision\624.jpg")
 img = cv2.resize(img, (250, 250))
 
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -1948,7 +1948,7 @@ cv2.destroyAllWindows()
 # HERE IS THIS IMAGE USED:
 
 
-![Alt Text](images/919.jp)
+![Alt Text](images/624.jp)
 
 
 ***Method 5: CLAHE (Advanced):***
