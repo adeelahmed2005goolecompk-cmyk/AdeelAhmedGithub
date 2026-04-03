@@ -1764,5 +1764,6 @@ cv2.destroyAllWindows()
 #THIS IS THE RESULT OF THE CODE:
 
 
-![Alt Text](
+![Alt Text](images/lion.jpg)
+
 
