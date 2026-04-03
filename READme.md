@@ -926,3 +926,80 @@ cv2.destroyAllWindows()
 
 
 
+# Feature Detection in Images (OpenCV)
+
+
+***Introduction***
+Feature detection is used to identify important points in an image such as corners, edges, and patterns.  
+These features help in tasks like object detection, image matching, and tracking.
+
+
+---
+
+
+***Corner Detection***
+Corner detection finds points in an image where intensity changes sharply.  
+It is useful in applications like object recognition and motion tracking.
+
+
+---
+
+
+***Harris Corner Detection (Concept)***
+OpenCV provides `cv2.cornerHarris()` for detecting corners.
+
+
+**Parameters:**
+- Image (grayscale, float32)
+- Block size (neighborhood size)
+- Ksize (Sobel derivative size)
+- K (free parameter)
+
+
+---
+
+
+## Shi-Tomasi Corner Detection
+
+
+Shi-Tomasi is an improved version of Harris Corner Detection.  
+It is more accurate and allows control over number of corners.
+
+
+---
+
+
+## Code
+
+
+```python
+import cv2
+import numpy as np
+
+*Load Image*
+img = cv2.imread("shapes.png")
+
+*Resize Image*
+img = cv2.resize(img, (400, 400))
+
+*Convert to Grayscale*
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+*Detect Corners*
+corners = cv2.goodFeaturesToTrack(gray, 140, 0.01, 5)
+corners = np.int64(corners)
+
+*Draw Corners*
+for i in corners:
+    x, y = i.ravel()
+    cv2.circle(img, (x, y), 3, (255, 255, 255), -1)
+
+*Display Result*
+cv2.imshow("Result", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+
+
+
