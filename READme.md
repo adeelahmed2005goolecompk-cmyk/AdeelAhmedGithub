@@ -1307,7 +1307,7 @@ import numpy as np
 
 
 **Method 1: Image Detection**
-img = cv2.imread(r"A:\computer_Vision\collor_balls.jpg")
+img = cv2.imread(r"A:\computer_Vision\balls.jpg")
 img = cv2.resize(img, (250, 250))
 img2 = img.copy()
 
