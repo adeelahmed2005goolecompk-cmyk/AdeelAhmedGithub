@@ -1604,18 +1604,98 @@ cv2.destroyAllWindows()
 
 # THIS IS THE RESULT OF YOUR CODE:
 
-![Alt Text]()
+![Alt Text](images/919.jpg)
 
 
 
 
+# Image Blending with OpenCV:
+   ***Introduction***
 
 
+Image blending is a technique used to combine two images into one.
 
 
+In OpenCV, blending is done using:
 
 
+cv2.addWeighted()
 
 
+It mixes two images using weights.
 
 
+ **Q No 1** What is Image Blending?
+
+
+**Ans** Image blending combines two images by assigning weights to each image.
+
+
+***Example***:
+
+
+**50% Image1**
+
+
+**50% Image2**
+
+
+***Formula***
+
+
+result = cv2.addWeighted(img1, alpha, img2, beta, gamma)
+alpha → weight of first image
+beta → weight of second image
+gamma → brightness value
+
+
+***The code as you want***
+
+```python code:
+
+
+import cv2
+import numpy as np
+
+
+# Read images:
+
+
+img1 = cv2.imread(r"A:\computer_Vision\pic_1.jpg")
+img2 = cv2.imread(r"A:\computer_Vision\pic_2.jpg")
+
+
+***Check images***
+
+
+if img1 is None or img2 is None:
+    print("Error: Images not found")
+    exit()
+
+
+# Resize images:
+
+
+img1 = cv2.resize(img1, (500, 500))
+img2 = cv2.resize(img2, (500, 500))
+
+# Blend images:
+
+
+result = cv2.addWeighted(img1, 0.5, img2, 0.5, 1)
+
+# Show images:
+
+
+cv2.imshow("Image 1", img1)
+cv2.imshow("Image 2", img2)
+cv2.imshow("Blended Result", result)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+![Alt Text](images/pic_1.jpg)
+
+
+![Alt Text](images/pic_2.jpg)
