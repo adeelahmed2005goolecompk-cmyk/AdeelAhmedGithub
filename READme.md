@@ -1887,7 +1887,7 @@ plt.show()
 import cv2
 from matplotlib import pyplot as plt
 
-img = cv2.imread(r"A:\computer_Vision\919.jpg")
+img = cv2.imread(r"A:\computer_Vision\624.jpg")
 img = cv2.resize(img, (250, 250))
 
 b, g, r = cv2.split(img)
@@ -1904,7 +1904,7 @@ plt.show()
 # Here IS THIS IMAGE USED:
 
 
-![Alt Text](images/919.jpg)
+![Alt Text](images/624.jpg)
 
 
 
@@ -1948,7 +1948,7 @@ cv2.destroyAllWindows()
 # HERE IS THIS IMAGE USED:
 
 
-![Alt Text](images/624.jp)
+![Alt Text](images/624.jpg)
 
 
 ***Method 5: CLAHE (Advanced):***
