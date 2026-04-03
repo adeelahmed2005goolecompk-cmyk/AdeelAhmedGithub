@@ -1997,8 +1997,153 @@ cv2.destroyAllWindows()
 
 
 
+# Morphological Transformations (OpenCV):
+
+
+   ***Introduction***
+
+
+Morphological Transformations are image processing operations based on image shape.
+
+
+They are mainly applied on binary images and require:
+
+
+***Input image:***
+
+
+# Structuring element (kernel)
+
+
+***Types of Operations***
+
+
+No1- ***Erosion → Removes small white noise.***
+
+
+No2- ***Dilation → Expands white regions.***
+
+
+No3- ***Opening → Erosion + Dilation.***
+
+
+No4- ***Closing → Dilation + Erosion.***
+
+
+No5- ***Top Hat → Highlights bright regions.***
+
+
+No6- ***Black Hat → Highlights dark regions.***
+
+
+No7- ***Gradient → Difference between dilation and erosion.***
+
+
+# Method 1: Basic Opening & Closing:
+
+
+```python code:
 
 
 
+import cv2
+import numpy as np
+
+img = cv2.imread(r"A:\computer_Vision\collor_balls.jpg", cv2.IMREAD_GRAYSCALE)
+img = cv2.resize(img, (200, 200))
+
+_, mask = cv2.threshold(img, 230, 255, cv2.THRESH_BINARY_INV)
+
+kernel = np.ones((3, 3), np.uint8)
+
+# Opening
+opening = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
+
+# Closing
+closing = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
+
+cv2.imshow("Image", img)
+cv2.imshow("Mask", mask)
+cv2.imshow("Opening", opening)
+cv2.imshow("Closing", closing)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+
+# HERE IS THIS IMAGE USED:
+
+![Alt Text](
+
+
+Method 2: All Morphological Operations
+
+
+```python code:
+
+
+import cv2
+import numpy as np
+from matplotlib import pyplot as plt
+
+# Load image
+img = cv2.imread(r"A:\computer_Vision\girl.jpg")
+img = cv2.resize(img, (300, 300))
+
+# Convert to grayscale
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# Threshold
+_, mask = cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY_INV)
+
+kernel = np.ones((2, 2), np.uint8)
+
+# Operations
+erosion = cv2.erode(mask, kernel, iterations=1)
+dilation = cv2.dilate(mask, kernel, iterations=1)
+opening = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
+closing = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
+tophat = cv2.morphologyEx(mask, cv2.MORPH_TOPHAT, kernel)
+gradient = cv2.morphologyEx(mask, cv2.MORPH_GRADIENT, kernel)
+blackhat = cv2.morphologyEx(mask, cv2.MORPH_BLACKHAT, kernel)
+
+# Show with OpenCV
+cv2.imshow("Original", img)
+cv2.imshow("Mask", mask)
+cv2.imshow("Erosion", erosion)
+cv2.imshow("Dilation", dilation)
+cv2.imshow("Opening", opening)
+cv2.imshow("Closing", closing)
+cv2.imshow("TopHat", tophat)
+cv2.imshow("Gradient", gradient)
+cv2.imshow("BlackHat", blackhat)
+
+# Show with Matplotlib
+titles = ['Original', 'Mask', 'Erosion', 'Dilation', 'Opening', 'Closing', 'TopHat', 'Gradient', 'BlackHat']
+images = [img, mask, erosion, dilation, opening, closing, tophat, gradient, blackhat]
+
+plt.figure(figsize=(10, 10))
+for i in range(9):
+    plt.subplot(3, 3, i+1)
+    plt.title(titles[i])
+    plt.xticks([])
+    plt.yticks([])
+    if len(images[i].shape) == 3:
+        plt.imshow(cv2.cvtColor(images[i], cv2.COLOR_BGR2RGB))
+    else:
+        plt.imshow(images[i], cmap='gray')
+
+plt.tight_layout()
+plt.show()
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+# HERE IS THIS IMAGE USED:
+
+
+![Alt Text](
 
 
