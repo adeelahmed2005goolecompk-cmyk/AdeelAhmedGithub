@@ -249,6 +249,10 @@ cv2.destroyAllWindows()
 ```
 ---
 
+
+# HERE IS THIS IMAGE USED:
+
+
 ![Alt Text](images/one.jpg)
 
 
@@ -333,6 +337,10 @@ img = np.ones((512, 512, 3), np.uint8) * 255
 cv2.waitKey(0)
 cv2.desttroyeAllWindows.
 ```
+
+# HERE IS THIS IMAGE USED:
+
+
 ![Alt Text](images/602.jpg)
 
 
@@ -392,7 +400,7 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
-#uotput result:
+# HERE IS THIS IMAGE USED:
 ![Alt Text](images/920.jpg)
 
 
@@ -596,7 +604,8 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
-**This is the output**
+
+**HERE IS THIS IMAGE USED:**
 
 
 ![Alt Text](images/shapes.png)
@@ -921,6 +930,10 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
+
+# HERE IS THIS IMAGE USED:
+
+
 ![Alt Text](images/54.jpg)
 
 
@@ -1000,6 +1013,10 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
+
+# HERE IS THIS IMAGE USED:
+
+
 ![Alt Text](images/shapes.png)
 
 
@@ -1072,7 +1089,7 @@ cv2.destroyAllWindows()
 ```
 
 
-# This is the output result:
+# HERE IS THIS IMAGE USED:
 
 
 ![Alt Tex](images/car.jpg)
@@ -1180,7 +1197,7 @@ cv2.destroyAllWindows()
 ```
 
 
-# THIS IS THE OUTOUT:
+# HERE IS THIS IMAGE USED:
 
 
 ![Alt Text](images/hand.jpg)
@@ -1334,7 +1351,7 @@ cv2.destroyAllWindows()
 ```
 
 
-# THIS IS THE OUTPUT:
+# HERE IS THIS IMAGE USED:
 ![Alt Text](images/balls.jpg)
 
 
@@ -1387,8 +1404,12 @@ It works by converting image points into a parameter space, where shapes are det
 This method works well even when:
 
 
-Edges are broken
-Images are noisy
+Edges are broken.
+
+
+Images are noisy.
+
+
 **Q No 1 What is Hough Transformation?**
 
 **Ans** The Hough Transform detects shapes (like lines or circles) by mapping image points into parameter space and finding peaks.
@@ -1454,7 +1475,7 @@ cv2.destroyAllWindows()
 ```
 
 
-# THIS IS THE OUTPUT OF FIRST CODE:
+# HERE IS THIS IMAGE USED:
 
 
 ![Alt Text](images/chess_1.png)
@@ -1501,7 +1522,7 @@ cv2.HoughLinesP() → Detect line segments
 ```
 
 
-# THIS IS THE OUTPUT OF SECONDE CODE:
+# HERE IS THIS IMAGE USED:
 
 
 ![Alt Text](images/square.jpg)
@@ -1602,7 +1623,7 @@ cv2.destroyAllWindows()
 ```
 
 
-# THIS IS THE RESULT OF YOUR CODE:
+# HERE IS THIS IMAGE USED:
 
 ![Alt Text](images/534.jpg)
 
@@ -1611,6 +1632,8 @@ cv2.destroyAllWindows()
 
 
 # Image Blending with OpenCV:
+   
+   
    ***Introduction***
 
 
@@ -1696,13 +1719,13 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
-# THIS IS THE 1ST OUTPUT:
+# HERE IS THIS IMAGE USED:
 
 
 ![Alt Text](images/pic_1.jpg)
 
 
-# THIS IS THE 2ND OUTPUT:
+#HERE IS THIS IMAGE USED:
 
 
 ![Alt Text](images/pic_2.jpg)
@@ -1761,10 +1784,192 @@ cv2.destroyAllWindows()
 ```
 
 
-#THIS IS THE RESULT OF THE CODE:
+#HERE IS THIS IMAGE USED:
 
 
 ![Alt Text](images/lion.jpg)
+
+
+
+
+
+
+
+
+
+
+
+# Image Analysis Using Histogram (OpenCV):
+
+
+   ***Introduction***
+
+   
+
+A histogram shows the distribution of pixel intensity values in an image.
+
+
+It helps to:
+
+
+***Understand brightness and contrast.***
+
+
+***Analyze image quality.***
+
+
+***Improve images using enhancement techniques.***
+
+
+**Q No 1** What is Histogram?
+
+
+**Ans** A histogram is a graph that represents how pixel values are distributed in an image.
+
+
+**calcHist() Syntax**
+
+
+cv2.calcHist([img], [channel], mask, [histSize], [0, 256])
+
+
+***Method 1: Simple Histogram:***
+
+```python code:
+
+
+import cv2
+import numpy as np
+from matplotlib import pyplot as plt
+
+
+img = np.zeros((200, 200), np.uint8)
+
+
+hist = cv2.calcHist([img], [0], None, [256], [0, 256])
+plt.plot(hist)
+plt.title("Simple Histogram")
+plt.show()
+```
+
+
+***Method 2: Drawing Shapes + Histogram:***
+
+
+```python code:
+
+
+import cv2
+import numpy as np
+from matplotlib import pyplot as plt
+
+img = np.zeros((200, 200), np.uint8)
+
+cv2.rectangle(img, (0,100), (200,200), (100), -1)
+cv2.rectangle(img, (0,50), (50,100), (127), -1)
+
+hist = cv2.calcHist([img], [0], None, [256], [0, 256])
+plt.plot(hist)
+plt.title("Histogram with Shapes")
+plt.show()
+```
+
+***Method 3: Color Histogram:***
+
+```python code:
+
+
+import cv2
+from matplotlib import pyplot as plt
+
+img = cv2.imread(r"A:\computer_Vision\919.jpg")
+img = cv2.resize(img, (250, 250))
+
+b, g, r = cv2.split(img)
+
+plt.hist(b.ravel(), 256, [0,256])
+plt.hist(g.ravel(), 256, [0,256])
+plt.hist(r.ravel(), 256, [0,256])
+
+plt.title("Color Histogram")
+plt.show()
+```
+
+
+
+***Method 4: Grayscale + Equalization:***
+
+
+```python code:
+
+
+import cv2
+import numpy as np
+from matplotlib import pyplot as plt
+
+img = cv2.imread(r"A:\computer_Vision\919.jpg")
+img = cv2.resize(img, (250, 250))
+
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# Histogram
+hist = cv2.calcHist([gray], [0], None, [256], [0, 256])
+plt.plot(hist)
+plt.title("Gray Histogram")
+plt.show()
+
+# Equalization
+equ = cv2.equalizeHist(gray)
+res = np.hstack((gray, equ))
+
+cv2.imshow("Original vs Equalized", res)
+
+hist2 = cv2.calcHist([equ], [0], None, [256], [0, 256])
+plt.plot(hist2)
+plt.title("Equalized Histogram")
+plt.show()
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+
+***Method 5: CLAHE (Advanced):***
+
+
+```python code:
+
+
+import cv2
+from matplotlib import pyplot as plt
+
+img = cv2.imread(r"A:\computer_Vision\54.jpg")
+img = cv2.resize(img, (250, 250))
+
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
+cl1 = clahe.apply(gray)
+
+cv2.imshow("CLAHE", cl1)
+
+hist = cv2.calcHist([cl1], [0], None, [256], [0, 256])
+plt.plot(hist)
+plt.title("CLAHE Histogram")
+plt.show()
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+
+**Q No 1** What is CLAHE?
+
+**Ans** CLAHE (Contrast Limited Adaptive Histogram Equalization):
+
+*No 1: Divides image into small regions*
+*No 2: Enhances contrast locally*
+*No 3: Reduces noise*
 
 
 
