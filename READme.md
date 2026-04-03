@@ -1072,3 +1072,5 @@ cv2.destroyAllWindows()
 ```
 
 
+# This is the output result:
+
