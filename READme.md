@@ -2077,6 +2077,7 @@ cv2.destroyAllWindows()
 ![Alt Text](collor_balls.jpg)
 
 
+
 Method 2: All Morphological Operations
 
 
