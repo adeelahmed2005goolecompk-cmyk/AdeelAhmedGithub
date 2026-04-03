@@ -1697,4 +1697,8 @@ cv2.destroyAllWindows()
 ```
 
 
-![Alt Text]()
+![Alt Text](images/pic_1.jpg)
+
+![Alt Text](images/pic_2.jpg)
+
+
