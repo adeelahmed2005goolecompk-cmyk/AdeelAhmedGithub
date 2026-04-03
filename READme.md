@@ -1335,7 +1335,7 @@ cv2.destroyAllWindows()
 
 
 # THIS IS THE OUTPUT:
-![Alt Text]()
+![Alt Text](images/balls.jpg)
 
 
 # Method 2: Webcam Detection
