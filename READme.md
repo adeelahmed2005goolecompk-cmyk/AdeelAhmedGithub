@@ -1699,10 +1699,10 @@ cv2.destroyAllWindows()
 # THIS IS THE 1ST OUTPUT:
 
 
-![Alt Text](images/pic_1.jpg)
+![Alt Text]()
 # THIS IS THE 2ND OUTPUT:
 
 
-![Alt Text](images/pic_2.jpg)
+
 
 
