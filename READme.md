@@ -1710,6 +1710,59 @@ cv2.destroyAllWindows()
 
 
 
+# Creating Image Border (OpenCV):
+   ***Introduction***
 
 
+Image border is used to add padding around an image.
+
+
+In OpenCV, this is done using:
+
+
+cv2.copyMakeBorder()
+**Q No1**: What is Image Border?
+
+
+**Ans** It is the process of adding space (border) around an image.
+
+
+***Function Syntax***
+
+
+cv2.copyMakeBorder(img, top, bottom, left, right, borderType, value)
+top, bottom, left, right → border size
+borderType → type of border
+value → color (for constant border)
+
+
+# THE FULL CODE OF CREATING THE BORDERS:
+
+
+```python code:
+
+
+import cv2
+import numpy as np
+
+# Load image:
+img = cv2.imread(r"A:\computer_Vision\lion.jpg")
+img = cv2.resize(img, (500, 500))
+
+# Create border:
+border = cv2.copyMakeBorder(img, 20, 20, 5, 5,
+                            cv2.BORDER_CONSTANT,
+                            value=[160, 27, 141])
+
+# Show result:
+cv2.imshow("Border Image", border)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+
+#THIS IS THE RESULT OF THE CODE:
+
+
+![Alt Text](
 
