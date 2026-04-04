@@ -2670,7 +2670,8 @@ cv2.destroyAllWindows()
 # THE IMAGE WHICH IS USED IN THE CODE:
 
 
-![Alt Text](
+![Alt Text](images/43.jpg)
+
 
 
 ```Python Code Example 2 – Interactive Threshold with Trackbar:
@@ -2702,9 +2703,11 @@ cv2.destroyAllWindows()
 # THE IMAGE WICH IS USED IN THE CODE:
 
 
-![Alt Text](
+![Alt Text](images/54.jpg)
 
-# Notes:
+
+
+# Important Notes:
 ***Adjust the thresholds to control sensitivity of edge detection.
 Trackbars provide an interactive way to tune thresholds in real-time.
 Always convert images to grayscale before applying Canny.***
@@ -2715,3 +2718,66 @@ Always convert images to grayscale before applying Canny.***
 
 
 
+# Image Pyramids – OpenCV:
+
+
+   ***Introduction:***
+
+   
+
+***Image pyramids are used when we need to work with the same image at different resolutions.***
+
+
+# Common applications:
+
+
+***Searching for faces or eyes in images.
+Image blending at multiple resolutions.***
+
+
+# Types of pyramids:
+
+
+# No 1 -) ***Gaussian Pyramid – Smooth downsampling of images.***
+# No 2 -) ***Laplacian Pyramid – Captures differences between levels of Gaussian pyramid.***
+
+
+```Python Code Example – Gaussian Pyramid:
+
+
+import cv2
+import numpy as np
+
+# Load image and resize
+img = cv2.imread(r"A:\computer_Vision\HARD.JPG")
+img = cv2.resize(img, (400, 400))
+
+# Gaussian pyramid: Downsampling
+pd1 = cv2.pyrDown(img)
+pd2 = cv2.pyrDown(pd1)
+
+# Gaussian pyramid: Upsampling
+pu1 = cv2.pyrUp(pd2)
+pu2 = cv2.pyrUp(pu1)
+
+# Display all images
+cv2.imshow("Original Image", img)
+cv2.imshow("Pyramid Down 1", pd1)
+cv2.imshow("Pyramid Down 2", pd2)
+cv2.imshow("Pyramid Up 1", pu1)
+cv2.imshow("Pyramid Up 2", pu2)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+# THE IMAGE WHICH IS USED INTO THE CODE:
+
+
+![Alt Text](
+# Important Notes:
+
+
+***pyrDown() reduces the resolution by half.
+pyrUp() increases the resolution by doubling.
+Pyramids are useful for multi-scale image analysis***
