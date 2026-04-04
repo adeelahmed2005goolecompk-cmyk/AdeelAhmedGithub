@@ -43,7 +43,7 @@ In OpenCV, face detection is commonly performed using Haar Cascade classifiers. 
 # Here we starts some questions
 
 
-**Q No 1**  What is the ‘Haarcascade file’?
+## **Q No 1**  What is the ‘Haarcascade file’?
 
 
 **Ans** The ‘HaarCascade file’ is a classifier file in which it is defined what a face looks like, including its parameters and features. All possible details about the face are available in that file. It is a part of computer vision.
