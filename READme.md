@@ -2080,7 +2080,7 @@ cv2.destroyAllWindows()
 
 # THE IMAGE WHICH IS USED IN THE CODE:
 
-![Alt Text](collor_balls.jpg)
+![Alt Text](
 
 
 
