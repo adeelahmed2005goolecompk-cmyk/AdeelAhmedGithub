@@ -28,7 +28,7 @@
 
 ---
 
-# 🟦 Face and eyes Detection On Image.
+# Code No 1-) Face and eyes Detection On Image.
 
 
 
@@ -258,7 +258,7 @@ cv2.destroyAllWindows()
 
 
 
-# Drawing Functions in OpenCV
+# Code No 2-) Drawing Functions in OpenCV
 
 ## Introduction
 Drawing functions in OpenCV are used to create shapes on images or video frames.  
@@ -409,7 +409,7 @@ cv2.destroyAllWindows()
 
 
 
-# Bitwise Operations in OpenCV
+# Code No 3-) Bitwise Operations in OpenCV
 
 ## Introduction
 Bitwise operations include AND, OR, NOT, and XOR.  
@@ -465,7 +465,7 @@ cv2.destroyAllWindows()
 ```
 
 
-# Contours and its Functions in OpenCV
+# Code No 4-) Contours and its Functions in OpenCV
 
 
 **There Are Two Methods**:
@@ -544,7 +544,7 @@ cv2.destroyAllWindows()
 ###Method No 2:
 
 
-# Approximation and Convex Hull in OpenCV
+# Code No 5-) Approximation and Convex Hull in OpenCV
 
 ***Sample Of Code***
 
@@ -615,7 +615,7 @@ cv2.destroyAllWindows()
 
 
 
-# Offline Color Picker
+# Code No 6-) Offline Color Picker
 
 ```python
 import cv2
@@ -657,7 +657,7 @@ cv2.destroyAllWindows()
 
 
 
-# Detecting Objects using Webcam (OpenCV)
+# Code No7-) Detecting Objects using Webcam (OpenCV)
 ## Live Detection
 
 ```python
@@ -736,7 +736,7 @@ cv2.destroyAllWindows()
 
 
 
-# Drawing on Video (OpenCV)
+# Code No8-) Drawing on Video (OpenCV)
 
 ```python
 import cv2
@@ -773,7 +773,7 @@ cv2.destroyAllWindows()
 
 
 
-# Face Detection Using Webcam
+# Code No 9 -) Face Detection Using Webcam
 
 ## Introduction
 Face detection using a webcam is a computer vision technique that identifies and locates human faces in real-time video. It works by capturing frames from the webcam and analyzing them using algorithms such as Haar Cascade. This technology is commonly used in security systems, attendance monitoring, and face recognition applications.
@@ -869,7 +869,7 @@ cv2.destroyAllWindows()
 ```
 
 
-# Face and Eye Detection on Image
+# Code No 10-) Face and Eye Detection on Image
 
 ## Introduction
 This program detects faces and eyes in a static image using OpenCV and Haar Cascade classifiers. It draws rectangles around detected faces and eyes.
@@ -941,7 +941,7 @@ cv2.destroyAllWindows()
 
 
 
-# Feature Detection in Images (OpenCV)
+# Code No 11-) Feature Detection in Images (OpenCV)
 
 
 ***Introduction***
@@ -1023,7 +1023,7 @@ cv2.destroyAllWindows()
 
 
 
-# GrabCut Algorithm (Background Removal)
+# Code No 12-) GrabCut Algorithm (Background Removal)
 
 ## Introduction
 GrabCut is an advanced image segmentation algorithm used to separate the foreground object from the background.  
@@ -1098,7 +1098,7 @@ cv2.destroyAllWindows()
 
 
 
-# Hand Detection (OpenCV)
+# Code No 13-) Hand Detection (OpenCV)
 
 
 ## Introduction
@@ -1205,21 +1205,30 @@ cv2.destroyAllWindows()
 ![Alt Text](images/hand.jpg)
 
 
-# Hough Circle Transformation (OpenCV)
+# Code No 14-) Hough Circle Transformation (OpenCV)
+
+
 ***Introduction***
+
 
 The Hough Circle Transform is an image processing technique used to detect circular shapes in an image.
 It works by converting edge points into a parameter space to find circle centers and radii.
 
+
 This method is very useful when:
+
 
 Circles are partially hidden
 Images contain noise
 
+
 In OpenCV, it is implemented using:
 
+
 cv2.HoughCircles()
-**Q1** What is Hough Circle Transformation?
+
+
+# **Q1** What is Hough Circle Transformation?
 
 **Ans** The Hough Circle Transform is used to detect circles in an image by identifying their center and radius using edge detection.
 
@@ -1272,7 +1281,7 @@ for (x, y, r) in data[0, :]:
 ```
 
 
-***Circle Detection Using Webcam***
+***code no 15-) Circle Detection Using Webcam***
 
 
 ```python
@@ -1317,7 +1326,7 @@ cv2.destroyAllWindows()
 ***Full Code (Two Methods)***
 
 
-***Detecting Circle By Hough***
+***code No 16-) Detecting Circle By Hough***
 
 
 ```python
@@ -1398,7 +1407,7 @@ cv2.destroyAllWindows()
 ```
 
 
-# Hough Transformation Lines (OpenCV)
+# Code No 17-) Hough Transformation Lines (OpenCV)
   ***Introduction***
 
 The Hough Transform is used in image processing to detect shapes like lines, circles, and ellipses.
@@ -1534,7 +1543,7 @@ cv2.HoughLinesP() → Detect line segments
 
 
 
-# Image Background Removal (OpenCV)
+# Code No 18-) Image Background Removal (OpenCV)
 
 
   ***Introduction***
@@ -1635,7 +1644,7 @@ cv2.destroyAllWindows()
 
 
 
-# Image Blending with OpenCV:
+# Code No 19-) Image Blending with OpenCV:
    
    
    ***Introduction***
@@ -1737,7 +1746,7 @@ cv2.destroyAllWindows()
 
 
 
-# Creating Image Border (OpenCV):
+# Code No 20-) Creating Image Border (OpenCV):
    ***Introduction***
 
 
@@ -1803,7 +1812,7 @@ cv2.destroyAllWindows()
 
 
 
-# Image Analysis Using Histogram (OpenCV):
+# Code No 21-) Image Analysis Using Histogram (OpenCV):
 
 
    ***Introduction***
@@ -2003,7 +2012,7 @@ cv2.destroyAllWindows()
 
 
 
-# Morphological Transformations (OpenCV):
+# Code No 22-) Morphological Transformations (OpenCV):
 
 
    ***Introduction***
@@ -2163,7 +2172,7 @@ cv2.destroyAllWindows()
 
 
 
-# Mouse Binding (OpenCV):
+# Code No 24-) Mouse Binding (OpenCV):
    ***Introduction***
 
 ***Mouse Binding allows you to detect mouse clicks on an image.***
@@ -2216,7 +2225,7 @@ cv2.destroyAllWindows()
 
 
 
-# Image Contours (OpenCV):
+# Code No 25-) Image Contours (OpenCV):
 
 
    ***Introduction***
@@ -2305,7 +2314,7 @@ cv2.destroyAllWindows()
 
 
 
-# Image Gradient (OpenCV):
+# Code No 26-) Image Gradient (OpenCV):
 
 
    ***Introduction:***
@@ -2396,7 +2405,7 @@ cv2.destroyAllWindows()
 
 
 
-# Image Operations (Pixels & Coordinates) - OpenCV
+# Code No 27-) Image Operations (Pixels & Coordinates) - OpenCV
 
 
 ***Introduction***
@@ -2509,7 +2518,7 @@ cv2.destroyAllWindows()
 
 
 
-# Image Smoothing and Filters - OpenCV:
+#Code No 28-) Image Smoothing and Filters - OpenCV:
 
 
    ***Introduction:***
@@ -2623,7 +2632,7 @@ Bilateral	Removes noise while preserving edges; slower but edge-preserving.***
 
 
 
-# Canny Edge Detection - OpenCV:
+# Code No 29-) Canny Edge Detection - OpenCV:
 
 
    ***Introduction***
@@ -2718,7 +2727,7 @@ Always convert images to grayscale before applying Canny.***
 
 
 
-# Image Pyramids – OpenCV:
+# Code No 30-) Image Pyramids – OpenCV:
 
 
    ***Introduction:***
@@ -2788,8 +2797,85 @@ Pyramids are useful for multi-scale image analysis***
 
 
 
+# Code No 31-) Object Detection on Live Video
+   
+   
+   ***Theory***
 
 
+***Object detection using color segmentation allows you to detect objects in a live video feed based on their color range.
+We convert the video frame to HSV color space for better color detection.
+Trackbars are used to adjust lower and upper HSV values in real-time.
+cv2.inRange() creates a mask for the selected color.
+cv2.bitwise_and() applies the mask to the frame to highlight detected objects.
+Exit the program by pressing the 'n' key.***
+
+
+``` Python Code:
+
+
+import cv2
+import numpy as np
+
+# Start webcam capture
+cap = cv2.VideoCapture(0)
+
+# Trackbar callback function (does nothing)
+def nothing(x):
+    pass
+
+# Create a window for color adjustment
+cv2.namedWindow("Color Adjustment")
+
+# Create HSV trackbars
+cv2.createTrackbar("Lower_H", "Color Adjustment", 0, 255, nothing)
+cv2.createTrackbar("Lower_S", "Color Adjustment", 0, 255, nothing)
+cv2.createTrackbar("Lower_V", "Color Adjustment", 0, 255, nothing)
+cv2.createTrackbar("Upper_H", "Color Adjustment", 255, 255, nothing)
+cv2.createTrackbar("Upper_S", "Color Adjustment", 255, 255, nothing)
+cv2.createTrackbar("Upper_V", "Color Adjustment", 255, 255, nothing)
+
+while True:
+    ret, frame = cap.read()
+    if not ret:
+        break
+
+    frame = cv2.resize(frame, (500, 500))
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+
+    # Get trackbar positions for HSV bounds
+    l_h = cv2.getTrackbarPos("Lower_H", "Color Adjustment")
+    l_s = cv2.getTrackbarPos("Lower_S", "Color Adjustment")
+    l_v = cv2.getTrackbarPos("Lower_V", "Color Adjustment")
+    u_h = cv2.getTrackbarPos("Upper_H", "Color Adjustment")
+    u_s = cv2.getTrackbarPos("Upper_S", "Color Adjustment")
+    u_v = cv2.getTrackbarPos("Upper_V", "Color Adjustment")
+
+    lower_bound = np.array([l_h, l_s, l_v])
+    upper_bound = np.array([u_h, u_s, u_v])
+
+    # Create mask and apply it
+    mask = cv2.inRange(hsv, lower_bound, upper_bound)
+    res = cv2.bitwise_and(frame, frame, mask=mask)
+
+    # Show frames
+    cv2.imshow("Original Frame", frame)
+    cv2.imshow("Mask", mask)
+    cv2.imshow("Result", res)
+
+    # Exit on pressing 'n' key
+    if cv2.waitKey(25) & 0xFF == 110:
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+```
+
+
+# THIS IS THE IMAGE WHICH IS USED IN THE CODE:
+
+
+![Alt Text](
 
 
 
