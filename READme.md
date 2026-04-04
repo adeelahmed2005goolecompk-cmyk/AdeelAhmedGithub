@@ -2509,4 +2509,107 @@ cv2.destroyAllWindows()
 
 
 
+# Image Smoothing and Filters - OpenCV:
 
+
+   ***Introduction:***
+   
+
+**Image smoothing (blurring) is a common operation in image processing.**
+
+
+***Used to remove noise from images.***
+
+
+***Different filters achieve smoothing in various ways:***
+
+
+***Low-pass filters (LPF): Remove noise.***
+
+
+***High-pass filters (HPF): Detect edges.***
+
+
+**Common smoothing filters include:**
+
+# No 1-) ***Homogeneous / Averaging***
+
+
+# No 1-) ***Gaussian***
+
+
+# No 1-) ***Median***
+
+
+# No 1-) ***Bilateral***
+
+
+```Python Code:
+
+
+import cv2
+import numpy as np
+from matplotlib import pyplot as plt
+
+# Load image
+img = cv2.imread(r"A:\computer_Vision\534.jpg")
+img = cv2.resize(img, (250, 250))
+cv2.imshow("Original", img)
+
+# 1️⃣ Homogeneous filter
+kernel = np.ones((5, 5), np.float32) / 25
+h_filter = cv2.filter2D(img, -1, kernel)
+cv2.imshow("Homogeneous", h_filter)
+
+# 2️⃣ Blur / Averaging
+blur = cv2.blur(img, (8, 8))
+cv2.imshow("Blur", blur)
+
+# 3️⃣ Gaussian filter
+gau = cv2.GaussianBlur(img, (5, 5), 0)
+cv2.imshow("Gaussian", gau)
+
+# 4️⃣ Median filter
+med = cv2.medianBlur(img, 5)
+cv2.imshow("Median", med)
+
+# 5️⃣ Bilateral filter
+bi_f = cv2.bilateralFilter(img, 9, 75, 75)
+cv2.imshow("Bilateral", bi_f)
+
+# Plot all images
+titles = ["Original", "Homogeneous", "Blur", "Gaussian", "Median", "Bilateral"]
+images = [img, h_filter, blur, gau, med, bi_f]
+
+plt.figure(figsize=(10,6))
+for i in range(6):
+    plt.subplot(2, 3, i + 1)
+    plt.imshow(cv2.cvtColor(images[i], cv2.COLOR_BGR2RGB))
+    plt.title(titles[i])
+    plt.xticks([])
+    plt.yticks([])
+
+plt.tight_layout()
+plt.show()
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+
+# THIS IS THE IMAGE WHICH IS USED IN THE CODE:
+
+
+![Alt](
+
+# Filter Summary:
+
+
+# Filter Description:
+
+
+***Homogeneous	Each output pixel is mean of its kernel neighbors (equal weight).
+Blur / Averaging	Averages all pixels under kernel area.
+Gaussian	Weighted average; center pixels more influential than edges.
+Median	Replaces pixel with median of neighbors; effective against salt & pepper noise.
+Bilateral	Removes noise while preserving edges; slower but edge-preserving.***
