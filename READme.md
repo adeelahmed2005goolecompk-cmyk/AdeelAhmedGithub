@@ -43,16 +43,16 @@ In OpenCV, face detection is commonly performed using Haar Cascade classifiers. 
 # Here we starts some questions
 
 
-## **Q No 1**  What is the ‘Haarcascade file’?
+## **Q No 1:**  What is the ‘Haarcascade file’?
 
 
-**Ans** The ‘HaarCascade file’ is a classifier file in which it is defined what a face looks like, including its parameters and features. All possible details about the face are available in that file. It is a part of computer vision.
+**Ans:** The ‘HaarCascade file’ is a classifier file in which it is defined what a face looks like, including its parameters and features. All possible details about the face are available in that file. It is a part of computer vision.
 
 
-**Q No 2** What is the code of loading an image?
+**Q No 2:** What is the code of loading an image?
 
 
-**Ans** Here is the some code to loading an image>
+**Ans:** Here is the some code to loading an image>
 
 
 **Code Input**
@@ -81,10 +81,10 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 
 	 	
-**Qno3** What is the code of converting an image in the gray scale?
+# **Qno3:** What is the code of converting an image in the gray scale?
 
 
-**Ans** Here is the full code of converting an image into gray scale>:
+**Ans:** Here is the full code of converting an image into gray scale>:
 
 
 **Code Input**
@@ -115,10 +115,10 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 
 	 
-**Qno4** Write full code of detecting faces in an image?
+# **Qno4:** Write full code of detecting faces in an image?
 
 
-**Ans** Here is the full code of detecting faces in an image >
+**Ans:** Here is the full code of detecting faces in an image >
 
 
 **Input Code**
@@ -173,10 +173,10 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 
 	 
-**Qno5** What is the full code of detecting eyes and faces?
+# **Qno5:** What is the full code of detecting eyes and faces?
 
 
-**Ans** Here is the full code of detecting faces and eyes>
+**Ans:** Here is the full code of detecting faces and eyes>
 
 
 ## Sample code 
@@ -271,8 +271,8 @@ These are useful for:
 
 ---
 
-## Q1 What are Drawing Functions?
-Drawing functions are used to draw shapes and text on images.  
+## Q No 1: What are Drawing Functions?
+# Ans **Drawing functions are used to draw shapes and text on images.**  
 They modify the image directly.
 
 # Sample Of Code.
@@ -1040,8 +1040,8 @@ The algorithm starts with a bounding box around the object and then refines the 
 ## Q1: What is GrabCut Algorithm?
 
 
-GrabCut is an image segmentation technique used to extract an object from its background.  
-It uses color information and graph cuts to improve object boundaries automatically.
+# Ans **GrabCut is an image segmentation technique used to extract an object from its background.**  
+**It uses color information and graph cuts to improve object boundaries automatically.**
 
 
 # Code Sample:
@@ -1414,7 +1414,7 @@ Edges are broken.
 Images are noisy.
 
 
-**Q No 1 What is Hough Transformation?**
+# **Q No 1 What is Hough Transformation?**
 
 **Ans** The Hough Transform detects shapes (like lines or circles) by mapping image points into parameter space and finding peaks.
 
@@ -1485,7 +1485,7 @@ cv2.destroyAllWindows()
 ![Alt Text](images/chess_1.png)
 
 
-# Method 2: Hough Lines Probabilistic
+***Method 2: Hough Lines Probabilistic***
 
 ```python code:
 import cv2
@@ -1551,7 +1551,7 @@ Remove unwanted areas
 Make images more professional
 
  
-**Q No 1** What is Image Background Removal?
+# **Q No 1** What is Image Background Removal?
 
 
 **Ans**  It is the process of removing the background of an image while keeping only the important object.
@@ -1559,25 +1559,25 @@ Make images more professional
 ***Steps Used into the code***
 
 
-#No 1: ***Load image***
+# No 1: ***Load image***
 
 
-#No 2:***Convert to HSV color space***
+# No 2:***Convert to HSV color space***
 
 
-#No 3:***Select ROI (Region of Interest)***
+# No 3:***Select ROI (Region of Interest)***
 
 
-#No 4:***Create histogram***
+# No 4:***Create histogram***
 
 
-#No 5:***Apply back projection***
+# No 5:***Apply back projection***
 
 
-#No 6:***Remove noise***
+# No 6:***Remove noise***
 
 
-#No 7: ***Merge mask with image***
+# No 7: ***Merge mask with image***
 
 
 ***Sample of code***
@@ -1653,7 +1653,7 @@ cv2.addWeighted()
 It mixes two images using weights.
 
 
- **Q No 1** What is Image Blending?
+ # **Q No 1** What is Image Blending?
 
 
 **Ans** Image blending combines two images by assigning weights to each image.
@@ -1748,7 +1748,7 @@ In OpenCV, this is done using:
 
 
 cv2.copyMakeBorder()
-**Q No1**: What is Image Border?
+# **Q No1**: What is Image Border?
 
 
 **Ans** It is the process of adding space (border) around an image.
@@ -1825,7 +1825,7 @@ It helps to:
 ***Improve images using enhancement techniques.***
 
 
-**Q No 1** What is Histogram?
+# **Q No 1** What is Histogram?
 
 
 **Ans** A histogram is a graph that represents how pixel values are distributed in an image.
@@ -1992,7 +1992,7 @@ cv2.destroyAllWindows()
 ![Alt Text](images/54.jpg)
 
 
-**Q No 1** What is CLAHE?
+# **Q No 1** What is CLAHE?
 
 **Ans** CLAHE (Contrast Limited Adaptive Histogram Equalization):
 
@@ -2234,7 +2234,7 @@ cv2.destroyAllWindows()
 ***Object detection***
 
 
-**Q No 1** What are Contours?
+# **Q No 1** What are Contours?
 
 
 **Ans** Contours represent the boundary of objects in an image.
@@ -2323,7 +2323,7 @@ cv2.destroyAllWindows()
 # No 2)- ***Feature extraction***
 
 
-**Q No 1:** What is Image Gradient?
+# **Q No 1:** What is Image Gradient?
 
 **Ans:** It represents how pixel values change in an image.
 
@@ -2502,6 +2502,7 @@ cv2.destroyAllWindows()
 
 
 ![Alt Text](images/lion.jpg)
+
 
 
 
