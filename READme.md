@@ -2532,16 +2532,20 @@ cv2.destroyAllWindows()
 
 **Common smoothing filters include:**
 
+
+# ***Filter Summary:***
+
+
 # No 1-) ***Homogeneous / Averaging***
 
 
-# No 1-) ***Gaussian***
+# No 2-) ***Gaussian***
 
 
-# No 1-) ***Median***
+# No 3-) ***Median***
 
 
-# No 1-) ***Bilateral***
+# No 4-) ***Bilateral***
 
 
 ```Python Code:
@@ -2556,24 +2560,24 @@ img = cv2.imread(r"A:\computer_Vision\534.jpg")
 img = cv2.resize(img, (250, 250))
 cv2.imshow("Original", img)
 
-# 1️⃣ Homogeneous filter
+# 1️⃣ Homogeneous filter:
 kernel = np.ones((5, 5), np.float32) / 25
 h_filter = cv2.filter2D(img, -1, kernel)
 cv2.imshow("Homogeneous", h_filter)
 
-# 2️⃣ Blur / Averaging
+# 2️⃣ Blur / Averaging:
 blur = cv2.blur(img, (8, 8))
 cv2.imshow("Blur", blur)
 
-# 3️⃣ Gaussian filter
+# 3️⃣ Gaussian filter:
 gau = cv2.GaussianBlur(img, (5, 5), 0)
 cv2.imshow("Gaussian", gau)
 
-# 4️⃣ Median filter
+# 4️⃣ Median filter:
 med = cv2.medianBlur(img, 5)
 cv2.imshow("Median", med)
 
-# 5️⃣ Bilateral filter
+# 5️⃣ Bilateral filter:
 bi_f = cv2.bilateralFilter(img, 9, 75, 75)
 cv2.imshow("Bilateral", bi_f)
 
@@ -2600,9 +2604,9 @@ cv2.destroyAllWindows()
 # THIS IS THE IMAGE WHICH IS USED IN THE CODE:
 
 
-![Alt](
+![Alt](images/534.jpg)
 
-# Filter Summary:
+
 
 
 # Filter Description:
@@ -2613,3 +2617,17 @@ Blur / Averaging	Averages all pixels under kernel area.
 Gaussian	Weighted average; center pixels more influential than edges.
 Median	Replaces pixel with median of neighbors; effective against salt & pepper noise.
 Bilateral	Removes noise while preserving edges; slower but edge-preserving.***
+
+
+
+
+
+
+
+
+
+
+
+
+
+
