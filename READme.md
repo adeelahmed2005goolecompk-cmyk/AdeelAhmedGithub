@@ -2301,6 +2301,95 @@ cv2.destroyAllWindows()
 **thickness → line thickness**
 
 
+![Alt Text](images/wow_pic.jpg)
+
+
+
+# Image Gradient (OpenCV):
+
+
+   ***Introduction:***
+   
+
+***Image Gradient shows the change in intensity or color in an image.***
+
+
+# It is mainly used for:
+
+
+# No 1)- ***Edge detection***
+
+
+# No 2)- ***Feature extraction***
+
+
+**Q No** What is Image Gradient?
+
+**Ans** It represents how pixel values change in an image.
+
+
+# Methods Used
+
+
+# Meth No 1-) ***Laplacian → detects edges using second derivative***
+
+
+# Meth No 2-) ***Sobel X → detects vertical edges.***
+
+
+# Meth No 3-) ***Sobel Y → detects horizontal edges.***
+
+
+```Python Code:
+
+
+import cv2
+import numpy as np
+
+
+# Load image
+img = cv2.imread(r"A:\computer_Vision\ben-10.jpg")
+img = cv2.resize(img, (250, 250))
+
+
+# Convert to grayscale
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+
+# Laplacian
+lap = cv2.Laplacian(gray, cv2.CV_64F, ksize=3)
+lap = np.uint8(np.absolute(lap))
+
+
+# Sobel X and Y
+sobelx = cv2.Sobel(gray, cv2.CV_64F, 1, 0, ksize=3)
+sobely = cv2.Sobel(gray, cv2.CV_64F, 0, 1, ksize=3)
+
+
+sobelx = np.uint8(np.absolute(sobelx))
+sobely = np.uint8(np.absolute(sobely))
+
+
+# Combine Sobel
+sobelcombine = cv2.bitwise_or(sobelx, sobely)
+
+
+# Show results
+cv2.imshow("Original", img)
+cv2.imshow("Gray", gray)
+cv2.imshow("Laplacian", lap)
+cv2.imshow("Sobel X", sobelx)
+cv2.imshow("Sobel Y", sobely)
+cv2.imshow("Sobel Combine", sobelcombine)
+
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+
+# THIS IS THE IMAGE WHICH IS USED:
+![Alt Text](
 
 
 
