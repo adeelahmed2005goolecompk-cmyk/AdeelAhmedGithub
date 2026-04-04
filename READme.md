@@ -2389,6 +2389,8 @@ cv2.destroyAllWindows()
 
 
 # THIS IS THE IMAGE WHICH IS USED:
+
+
 ![Alt Text](images/ben-10.jpg)
 
 
