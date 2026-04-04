@@ -2872,12 +2872,69 @@ cv2.destroyAllWindows()
 ```
 
 
-# THIS IS THE IMAGE WHICH IS USED IN THE CODE:
 
 
-![Alt Text](
+
+# Code No 32-) Object Detection & Optical Flow in OpenCV:
 
 
+***Theory***
+
+
+***Object Detection (Part 2)
+Detect objects in an image based on HSV color ranges.
+Trackbars allow real-time adjustment of lower and upper HSV values.
+cv2.inRange() creates a mask for the selected color range.
+cv2.bitwise_and() applies the mask to highlight the detected objects.***
+
+
+# Object Detection Code:
+
+```Python Code:
+import cv2
+import numpy as np
+
+# Load image
+frame = cv2.imread(r"A:\computer_Vision\color_balls.jpg")
+frame = cv2.resize(frame, (500, 500))
+
+def nothing(x):
+    pass
+
+# Trackbar window
+cv2.namedWindow("Color Adjustments")
+cv2.createTrackbar("Lower_H", "Color Adjustments", 0, 255, nothing)
+cv2.createTrackbar("Lower_S", "Color Adjustments", 0, 255, nothing)
+cv2.createTrackbar("Lower_V", "Color Adjustments", 0, 255, nothing)
+cv2.createTrackbar("Upper_H", "Color Adjustments", 255, 255, nothing)
+cv2.createTrackbar("Upper_S", "Color Adjustments", 255, 255, nothing)
+cv2.createTrackbar("Upper_V", "Color Adjustments", 255, 255, nothing)
+
+while True:
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+
+    lower_bound = np.array([cv2.getTrackbarPos("Lower_H", "Color Adjustments"),
+                            cv2.getTrackbarPos("Lower_S", "Color Adjustments"),
+                            cv2.getTrackbarPos("Lower_V", "Color Adjustments")])
+    upper_bound = np.array([cv2.getTrackbarPos("Upper_H", "Color Adjustments"),
+                            cv2.getTrackbarPos("Upper_S", "Color Adjustments"),
+                            cv2.getTrackbarPos("Upper_V", "Color Adjustments")])
+
+    mask = cv2.inRange(hsv, lower_bound, upper_bound)
+    res = cv2.bitwise_and(frame, frame, mask=mask)
+
+    cv2.imshow("Original Frame", frame)
+    cv2.imshow("Mask", mask)
+    cv2.imshow("Result", res)
+
+    if cv2.waitKey(1) & 0xFF == 27:  # ESC key to exit
+        break
+cv2.destroyAllWindows()
+```
+
+# THE IMAGE WHICH IS THE INTO THE CODE:
+
+![Alt TexT](
 
 
 
