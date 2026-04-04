@@ -250,7 +250,7 @@ cv2.destroyAllWindows()
 ---
 
 
-# HERE IS THIS IMAGE USED:
+# THE IMAGE WHICH IS USED IN THE CODE:
 
 
 ![Alt Text](images/one.jpg)
@@ -338,7 +338,7 @@ cv2.waitKey(0)
 cv2.desttroyeAllWindows.
 ```
 
-# HERE IS THIS IMAGE USED:
+# THE IMAGE WHICH IS USED IN THE CODE:
 
 
 ![Alt Text](images/602.jpg)
@@ -400,7 +400,9 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
-# HERE IS THIS IMAGE USED:
+# THE IMAGE WHICH IS USED IN THE CODE:
+
+
 ![Alt Text](images/920.jpg)
 
 
@@ -605,7 +607,7 @@ cv2.destroyAllWindows()
 ```
 
 
-**HERE IS THIS IMAGE USED:**
+**THE IMAGE WHICH IS USED IN THE CODE:**
 
 
 ![Alt Text](images/shapes.png)
@@ -931,7 +933,7 @@ cv2.destroyAllWindows()
 ```
 
 
-# HERE IS THIS IMAGE USED:
+# THE IMAGE WHICH IS USED IN THE CODE:
 
 
 ![Alt Text](images/54.jpg)
@@ -1014,7 +1016,7 @@ cv2.destroyAllWindows()
 ```
 
 
-# HERE IS THIS IMAGE USED:
+# THE IMAGE WHICH IS USED IN THE CODE:
 
 
 ![Alt Text](images/shapes.png)
@@ -1089,7 +1091,7 @@ cv2.destroyAllWindows()
 ```
 
 
-# HERE IS THIS IMAGE USED:
+# THE IMAGE WHICH IS USED IN THE CODE:
 
 
 ![Alt Tex](images/car.jpg)
@@ -1197,7 +1199,7 @@ cv2.destroyAllWindows()
 ```
 
 
-# HERE IS THIS IMAGE USED:
+# THE IMAGE WHICH IS USED IN THE CODE:
 
 
 ![Alt Text](images/hand.jpg)
@@ -1351,7 +1353,9 @@ cv2.destroyAllWindows()
 ```
 
 
-# HERE IS THIS IMAGE USED:
+# THE IMAGE WHICH IS USED IN THE CODE:
+
+
 ![Alt Text](images/balls.jpg)
 
 
@@ -1475,7 +1479,7 @@ cv2.destroyAllWindows()
 ```
 
 
-# HERE IS THIS IMAGE USED:
+# THE IMAGE WHICH IS USED IN THE CODE:
 
 
 ![Alt Text](images/chess_1.png)
@@ -1522,7 +1526,7 @@ cv2.HoughLinesP() → Detect line segments
 ```
 
 
-# HERE IS THIS IMAGE USED:
+# THE IMAGE WHICH IS USED IN THE CODE:
 
 
 ![Alt Text](images/square.jpg)
@@ -1623,7 +1627,7 @@ cv2.destroyAllWindows()
 ```
 
 
-# HERE IS THIS IMAGE USED:
+# THE IMAGE WHICH IS USED IN THE CODE:
 
 ![Alt Text](images/534.jpg)
 
@@ -1719,13 +1723,13 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
-# HERE IS THIS IMAGE USED:
+# THE IMAGE WHICH IS USED IN THE CODE:
 
 
 ![Alt Text](images/pic_1.jpg)
 
 
-#HERE IS THIS IMAGE USED:
+#  THE IMAGE WHICH IS USED IN THE CODE:
 
 
 ![Alt Text](images/pic_2.jpg)
@@ -1784,7 +1788,7 @@ cv2.destroyAllWindows()
 ```
 
 
-#HERE IS THIS IMAGE USED:
+# THE IMAGE WHICH IS USED IN THE CODE:
 
 
 ![Alt Text](images/lion.jpg)
@@ -1874,8 +1878,10 @@ plt.title("Histogram with Shapes")
 plt.show()
 ```
 
-# HERE IN THE CODE WE HAVE NOT USING AN ANY IMAGE:
+# HERE IN THE CODE WE HAVE NOT USING AN ANY IMAGE
 
+
+# because the code has been made like this.
 
 
 ***Method 3: Color Histogram:***
@@ -1901,7 +1907,7 @@ plt.show()
 ```
 
 
-# Here IS THIS IMAGE USED:
+# THE IMAGE WHICH IS USED IN THE CODE:
 
 
 ![Alt Text](images/624.jpg)
@@ -1945,7 +1951,7 @@ cv2.destroyAllWindows()
 ```
 
 
-# HERE IS THIS IMAGE USED:
+# THE IMAGE WHICH IS USED IN THE CODE:
 
 
 ![Alt Text](images/624.jpg)
@@ -1980,7 +1986,7 @@ cv2.destroyAllWindows()
 ```
 
 
-# HERE IS THIS IMAGE USED:
+# THE IMAGE WHICH IS USED IN THE CODE:
 
 
 ![Alt Text](images/54.jpg)
@@ -2072,7 +2078,7 @@ cv2.destroyAllWindows()
 ```
 
 
-# HERE IS THIS IMAGE USED:
+# THE IMAGE WHICH IS USED IN THE CODE:
 
 ![Alt Text](collor_balls.jpg)
 
@@ -2142,7 +2148,7 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
-# HERE IS THIS IMAGE USED:
+# THE IMAGE WHICH IS USED IN THE CODE:
 
 
 ![Alt Text](images/girl.jpg)
