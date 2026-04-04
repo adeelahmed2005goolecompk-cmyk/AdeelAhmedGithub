@@ -2455,6 +2455,13 @@ cv2.destroyAllWindows()
 ```
 
 
+# THIS IS THE IMAGE WHICH IS USED IN THE CODE:
+
+
+![Alt](images/54.jpg)
+
+
+
 # Method 2: Pixel Access-)
 
 
@@ -2491,7 +2498,10 @@ cv2.destroyAllWindows()
 ```
 
 
-![Alt Text](
+# THIS IS THE IAMGE WHICH IS USED IN THE CODE:
+
+
+![Alt Text](images/lion.jpg)
 
 
 
