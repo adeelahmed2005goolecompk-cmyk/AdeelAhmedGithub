@@ -2216,6 +2216,93 @@ cv2.destroyAllWindows()
 
 
 
+# Image Contours (OpenCV):
+
+
+   ***Introduction***
+   
+
+**Contours are curves that join continuous points with same intensity.**
+
+
+# They are useful for:
+
+
+***Shape analysis***
+
+
+***Object detection***
+
+
+**Q No 1** What are Contours?
+
+
+**Ans** Contours represent the boundary of objects in an image.
+
+
+# Best results:
+
+
+***Use grayscale image**
+
+
+***Apply threshold (binary image):***
+
+
+# Functions Used:
+
+
+***cv2.findContours()***
+
+
+***cv2.drawContours()***
+
+
+```Python Code:
+import cv2
+import numpy as np
+
+# Load image
+img = cv2.imread(r"A:\computer_Vision\wow_pic.jpg")
+img = cv2.resize(img, (350, 350))
+
+# Convert to grayscale
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# Apply threshold
+ret, thresh = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
+
+# Find contours
+cnts, hier = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+# Draw all contours (-1 means all)
+cv2.drawContours(img, cnts, -1, (20, 250, 15), 4)
+
+# Show results
+cv2.imshow("Original", img)
+cv2.imshow("Gray", gray)
+cv2.imshow("Threshold", thresh)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+
+# Parameters
+**cv2.drawContours(image, contours, index, color, thickness)**
+
+
+**index = -1 → draw all contours**
+
+
+**color → contour color**
+
+
+**thickness → line thickness**
+
+
+
+
 
 
 
