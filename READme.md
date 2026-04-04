@@ -2875,7 +2875,7 @@ cv2.destroyAllWindows()
 
 
 
-# Code No 32-) Object Detection & Optical Flow in OpenCV:
+# Code No 32-) Object Detection OpenCV:
 
 
 ***Theory***
@@ -2895,7 +2895,7 @@ import cv2
 import numpy as np
 
 # Load image
-frame = cv2.imread(r"A:\computer_Vision\color_balls.jpg")
+frame = cv2.imread(r"A:\computer_Vision\collor_balls.jpg")
 frame = cv2.resize(frame, (500, 500))
 
 def nothing(x):
@@ -2934,12 +2934,157 @@ cv2.destroyAllWindows()
 
 # THE IMAGE WHICH IS THE INTO THE CODE:
 
-![Alt TexT](
+
+![Alt TexT](images/collor_balls.jpg)
 
 
 
 
 
+
+# Code No 33-) Object Tracking and Detection Using OpenCV
+   
+   
+   ***Theory***
+
+   
+***Object Tracking can be done using MeanShift or HOG-based human detection.
+#MeanShift Algorithm:
+Select a target and calculate its histogram for backprojection.
+Set an initial location of the window.
+Define termination criteria to stop the tracking.
+HOG Human Detection:
+Uses Histogram of Oriented Gradients + SVM detector to detect humans in frames.
+Detects humans and draws rectangles or rotated boxes around them.***
+
+
+# Code – Method 1 (MeanShift + HOG + Frozen ROI)
+
+
+# THIS CODE IS FOR VIDEOS:
+
+
+```Python Code:
+
+
+import cv2
+import numpy as np
+
+# Load video
+cap = cv2.VideoCapture(r"A:\computer_Vision\2008.mp4")
+if not cap.isOpened():
+    print("Error: Video not found")
+    exit()
+
+# Initialize HOG human detector
+hog = cv2.HOGDescriptor()
+hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
+
+# Random ROI settings
+width, height = 120, 180
+roi_frozen = False
+frozen_roi = None
+
+# Select initial random ROI
+ret, frame = cap.read()
+if ret:
+    frame = cv2.resize(frame, (500, 300))
+    h, w, _ = frame.shape
+    x = np.random.randint(0, w - width)
+    y = np.random.randint(0, h - height)
+    frozen_roi = frame[y:y + height, x:x + width]
+
+while True:
+    ret, frame = cap.read()
+    if not ret:
+        break
+
+    frame = cv2.resize(frame, (500, 300))
+    output_frame = frame.copy()
+
+    # Detect humans
+    boxes, weights = hog.detectMultiScale(frame, winStride=(8,8), padding=(16,16), scale=1.05)
+    for (hx, hy, hw, hh) in boxes:
+        cv2.rectangle(output_frame, (hx, hy), (hx + hw, hy + hh), (0, 255, 0), 2)
+        cv2.putText(output_frame, "Person", (hx, hy-5), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0,255,0), 2)
+
+    # Draw rectangle around frozen ROI
+    cv2.rectangle(output_frame, (x, y), (x + width, y + height), (255, 0, 0), 2)
+
+    # Show video and frozen ROI
+    cv2.imshow("Video with Humans", output_frame)
+    if frozen_roi is not None:
+        cv2.imshow("Frozen ROI", frozen_roi)
+
+    k = cv2.waitKey(30) & 0xff
+    if k == 32:  # SPACE to freeze ROI permanently
+        roi_frozen = True
+    if k == 110:  # n to exit
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+```
+
+
+
+# Code – Method 2 (HOG Human Detection with Rotated Boxes):
+
+
+```Python Code:
+
+
+import cv2
+import numpy as np
+
+# Load video
+cap = cv2.VideoCapture(r"A:\computer_Vision\2008.mp4")
+if not cap.isOpened():
+    print("Error: Video not found")
+    exit()
+
+# HOG Human Detector
+hog = cv2.HOGDescriptor()
+hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
+
+while True:
+    ret, frame = cap.read()
+    if not ret:
+        break
+
+    frame = cv2.resize(frame, (800, 450))
+    all_pts = []
+
+    # Detect humans
+    boxes, weights = hog.detectMultiScale(frame, winStride=(8, 8), padding=(8, 8), scale=1.05)
+    for (x, y, w, h) in boxes:
+        # Convert to float for rotated rectangle
+        cx, cy = float(x + w / 2), float(y + h / 2)
+        rect = ((cx, cy), (float(w), float(h)), 0.0)
+        box = cv2.boxPoints(rect)
+        pts = np.int64(box)
+        all_pts.append(pts)
+
+    # Draw all rotated rectangles
+    if len(all_pts) > 0:
+        cv2.polylines(frame, all_pts, True, (255, 0, 0), 1)
+
+    cv2.imshow("Human Detection frames:", frame)
+
+    key = cv2.waitKey(1) & 0xFF
+    if key == 27 or key == ord('n'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
+```
+
+
+# This Markdown format is simple:
+
+***Theory at the top
+Two code blocks separated for Method 1 and Method 2
+Comments inside the code explain each step clearly***
 
 
 
