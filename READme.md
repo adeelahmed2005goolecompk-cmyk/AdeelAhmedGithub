@@ -2623,7 +2623,91 @@ Bilateral	Removes noise while preserving edges; slower but edge-preserving.***
 
 
 
+# Canny Edge Detection - OpenCV:
 
+
+   ***Introduction***
+   
+
+***Canny edge detection is a popular multi-stage edge detection algorithm developed by John F. Canny in 1986.
+It is widely used to detect edges in images accurately.***
+
+
+# Steps in Canny Edge Detection:
+
+
+***Noise Reduction – Usually using a Gaussian filter.
+Gradient Calculation – Determine intensity gradients.
+Non-Maximum Suppression – Thins out edges.
+Double Threshold – Classify strong, weak, and non-edges.
+Edge Tracking by Hysteresis – Finalize edges.***
+
+
+```Python Code Example 1 – Basic Canny Edge Detection
+import cv2
+import numpy as np
+
+# Load image and resize
+img = cv2.imread(r"A:\computer_Vision\43.jpg")
+img = cv2.resize(img, (250, 250))
+
+# Convert to grayscale
+img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# Apply Canny Edge Detection
+canny = cv2.Canny(img_gray, 50, 150)
+
+# Show results
+cv2.imshow("Original Image", img)
+cv2.imshow("Gray Image", img_gray)
+cv2.imshow("Canny Edges", canny)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+
+# THE IMAGE WHICH IS USED IN THE CODE:
+
+
+![Alt Text](
+
+
+```Python Code Example 2 – Interactive Threshold with Trackbar:
+import cv2
+import numpy as np
+
+img = cv2.imread(r"A:\computer_Vision\54.jpg")
+img = cv2.resize(img, (250, 250))
+img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+def nothing(x):
+    pass
+
+cv2.namedWindow("Canny")
+cv2.createTrackbar("Threshold", "Canny", 0, 255, nothing)
+
+while True:
+    a = cv2.getTrackbarPos("Threshold", "Canny")
+    res = cv2.Canny(img_gray, a, 255)
+    cv2.imshow("Canny", res)
+
+    k = cv2.waitKey(1) & 0xFF
+    if k == 27:  # ESC key
+        break
+
+cv2.destroyAllWindows()
+```
+
+# THE IMAGE WICH IS USED IN THE CODE:
+
+
+![Alt Text](
+
+# Notes:
+***Adjust the thresholds to control sensitivity of edge detection.
+Trackbars provide an interactive way to tune thresholds in real-time.
+Always convert images to grayscale before applying Canny.***
 
 
 
