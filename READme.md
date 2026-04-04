@@ -2323,12 +2323,12 @@ cv2.destroyAllWindows()
 # No 2)- ***Feature extraction***
 
 
-**Q No** What is Image Gradient?
+**Q No 1:** What is Image Gradient?
 
-**Ans** It represents how pixel values change in an image.
+**Ans:** It represents how pixel values change in an image.
 
 
-# Methods Used
+# Methods Used:
 
 
 # Meth No 1-) ***Laplacian → detects edges using second derivative***
@@ -2394,8 +2394,102 @@ cv2.destroyAllWindows()
 
 
 
+# Image Operations (Pixels & Coordinates) - OpenCV
 
 
+***Introduction***
+
+# This project shows how to:
+
+# No 1-): ***Access pixel values.***
+
+
+# No 2-) ***Get image properties.***
+
+
+# No 3-) ***Split and merge color channels.***
+
+
+# Image Properties:
+
+
+**You can get:**
+
+# 1-) **Shape (height, width, channels)**
+# 2-) **Total pixels.**
+# 3-) **Data type.**
+
+
+# Method 1: Split & Merge Channels-)
+
+
+```Pythin Code:
+
+
+import cv2
+import numpy as np
+
+# Load image
+img = cv2.imread(r"A:\computer_Vision\54.jpg")
+img = cv2.resize(img, (300, 300))
+
+# Image properties
+print("shape==", img.shape)
+print("no.of pixels==", img.size)
+print("datatype==", img.dtype)
+
+# Split channels (BGR)
+b, g, r = cv2.split(img)
+
+# Merge channels (RGB order)
+merged = cv2.merge((r, g, b))
+
+# Show images
+cv2.imshow("Original", img)
+cv2.imshow("Merged (RGB)", merged)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+
+# Method 2: Pixel Access-)
+
+
+```Python Code:
+
+
+import cv2
+
+# Load image
+img = cv2.imread(r"A:\computer_Vision\lion.jpg")
+img = cv2.resize(img, (600, 600))
+
+# Image properties
+print("shape==", img.shape)
+print("no.of pixels==", img.size)
+print("datatype==", img.dtype)
+
+# Access pixel
+px = img[520, 580]
+print("Pixel value:", px)
+
+# Access BGR channels
+blue = img[520, 580, 0]
+green = img[520, 580, 1]
+red = img[520, 580, 2]
+
+print("Blue:", blue)
+print("Green:", green)
+print("Red:", red)
+
+cv2.imshow("Image", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+
+![Alt Text](
 
 
 
