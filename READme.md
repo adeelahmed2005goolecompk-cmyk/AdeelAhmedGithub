@@ -2157,3 +2157,69 @@ cv2.destroyAllWindows()
 
 
 
+
+
+
+
+
+
+# Mouse Binding (OpenCV):
+   ***Introduction***
+
+***Mouse Binding allows you to detect mouse clicks on an image.***
+
+
+***Left Click → Show coordinates***
+
+
+***Right Click → Show pixel color***
+
+
+```python Code:
+
+
+import cv2
+import numpy as np
+
+def mouse_event(event, x, y, flags, param):
+
+    font = cv2.FONT_HERSHEY_PLAIN
+
+    # Left click → coordinates
+    if event == cv2.EVENT_LBUTTONDOWN:
+        cord = str(x) + " , " + str(y)
+        cv2.putText(img, cord, (x, y), font, 1, (155, 125, 100), 2)
+
+    # Right click → BGR color
+    if event == cv2.EVENT_RBUTTONDOWN:
+        b = img[y, x, 0]
+        g = img[y, x, 1]
+        r = img[y, x, 2]
+        color = str(b) + " , " + str(g) + " , " + str(r)
+        cv2.putText(img, color, (x, y), font, 1, (152, 255, 130), 2)
+
+cv2.namedWindow("res")
+
+img = cv2.imread(r"A:\computer_Vision\54.jpg")
+img = cv2.resize(img, (500, 500))
+
+cv2.setMouseCallback("res", mouse_event)
+
+while True:
+    cv2.imshow("res", img)
+    if cv2.waitKey(1) & 0xFF == 110:   # press 'n' to exit
+        break
+
+cv2.destroyAllWindows()
+```
+
+
+
+
+
+
+
+
+
+
+
