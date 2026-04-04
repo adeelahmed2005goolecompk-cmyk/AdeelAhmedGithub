@@ -2774,7 +2774,9 @@ cv2.destroyAllWindows()
 # THE IMAGE WHICH IS USED INTO THE CODE:
 
 
-![Alt Text](
+![Alt Text](HARD.jpg)
+
+
 # Important Notes:
 
 
