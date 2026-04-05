@@ -3615,6 +3615,7 @@ Shows match using rectangle**
 
 
 
+
 # Code No 40-) Video Background Removal:
 
 
@@ -3680,7 +3681,7 @@ cv2.destroyAllWindows()
 # THIS IS THE VIDEO WHICH IS USED INTO THE CODE:
 
 
-![Watch Video](images/2008.mp4)
+[Watch Video](images/2008.mp4)
 
 
 
@@ -3826,73 +3827,5 @@ cv2.destroyAllWindows()
 ***Readable: Each method is clearly separated.
 Documented: Small comments explain what each section does.
 GitHub-ready: Perfect for a .py file with inline explanation***
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
