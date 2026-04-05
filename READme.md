@@ -49,7 +49,7 @@ In OpenCV, face detection is commonly performed using Haar Cascade classifiers. 
 **Ans:** The ‘HaarCascade file’ is a classifier file in which it is defined what a face looks like, including its parameters and features. All possible details about the face are available in that file. It is a part of computer vision.
 
 
-**Q No 2:** What is the code of loading an image?
+# **Q No 2:** What is the code of loading an image?
 
 
 **Ans:** Here is the some code to loading an image>
@@ -338,14 +338,14 @@ cv2.waitKey(0)
 cv2.desttroyeAllWindows.
 ```
 
-# Code No 2-)  THE IMAGE WHICH IS USED IN THE CODE:
+# THE IMAGE WHICH IS USED IN THE CODE:
 
 
 ![Alt Text](images/602.jpg)
 
 
 
-# Removing Background in an Image using OpenCV
+# Code No 3-) Removing Background in an Image using OpenCV
 
 ## Code
 
