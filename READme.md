@@ -338,7 +338,7 @@ cv2.waitKey(0)
 cv2.desttroyeAllWindows.
 ```
 
-# THE IMAGE WHICH IS USED IN THE CODE:
+# Code No 2-)  THE IMAGE WHICH IS USED IN THE CODE:
 
 
 ![Alt Text](images/602.jpg)
@@ -409,7 +409,7 @@ cv2.destroyAllWindows()
 
 
 
-# Code No 3-) Bitwise Operations in OpenCV
+# Code No 4-) Bitwise Operations in OpenCV
 
 ## Introduction
 Bitwise operations include AND, OR, NOT, and XOR.  
@@ -465,7 +465,7 @@ cv2.destroyAllWindows()
 ```
 
 
-# Code No 4-) Contours and its Functions in OpenCV
+# Code No 5-) Contours and its Functions in OpenCV
 
 
 **There Are Two Methods**:
@@ -615,7 +615,7 @@ cv2.destroyAllWindows()
 
 
 
-# Code No 6-) Offline Color Picker
+# Code No 7-) Offline Color Picker
 
 ```python
 import cv2
@@ -657,7 +657,7 @@ cv2.destroyAllWindows()
 
 
 
-# Code No7-) Detecting Objects using Webcam (OpenCV)
+# Code No8-) Detecting Objects using Webcam (OpenCV)
 ## Live Detection
 
 ```python
@@ -736,7 +736,7 @@ cv2.destroyAllWindows()
 
 
 
-# Code No8-) Drawing on Video (OpenCV)
+# Code No9-) Drawing on Video (OpenCV)
 
 ```python
 import cv2
@@ -773,7 +773,8 @@ cv2.destroyAllWindows()
 
 
 
-# Code No 9 -) Face Detection Using Webcam
+# Code No 10 -) Face Detection Using Webcam:
+
 
 ## Introduction
 Face detection using a webcam is a computer vision technique that identifies and locates human faces in real-time video. It works by capturing frames from the webcam and analyzing them using algorithms such as Haar Cascade. This technology is commonly used in security systems, attendance monitoring, and face recognition applications.
@@ -869,7 +870,7 @@ cv2.destroyAllWindows()
 ```
 
 
-# Code No 10-) Face and Eye Detection on Image
+# Code No 11-) Face and Eye Detection on Image
 
 ## Introduction
 This program detects faces and eyes in a static image using OpenCV and Haar Cascade classifiers. It draws rectangles around detected faces and eyes.
@@ -941,7 +942,7 @@ cv2.destroyAllWindows()
 
 
 
-# Code No 11-) Feature Detection in Images (OpenCV)
+# Code No 12-) Feature Detection in Images (OpenCV)
 
 
 ***Introduction***
@@ -1023,7 +1024,7 @@ cv2.destroyAllWindows()
 
 
 
-# Code No 12-) GrabCut Algorithm (Background Removal)
+# Code No 13-) GrabCut Algorithm (Background Removal)
 
 ## Introduction
 GrabCut is an advanced image segmentation algorithm used to separate the foreground object from the background.  
@@ -1098,7 +1099,7 @@ cv2.destroyAllWindows()
 
 
 
-# Code No 13-) Hand Detection (OpenCV)
+# Code No 14-) Hand Detection (OpenCV)
 
 
 ## Introduction
@@ -1205,7 +1206,7 @@ cv2.destroyAllWindows()
 ![Alt Text](images/hand.jpg)
 
 
-# Code No 14-) Hough Circle Transformation (OpenCV)
+# Code No 15-) Hough Circle Transformation (OpenCV)
 
 
 ***Introduction***
@@ -1281,7 +1282,7 @@ for (x, y, r) in data[0, :]:
 ```
 
 
-***code no 15-) Circle Detection Using Webcam***
+***code no 16-) Circle Detection Using Webcam***
 
 
 ```python
@@ -1326,7 +1327,7 @@ cv2.destroyAllWindows()
 ***Full Code (Two Methods)***
 
 
-***code No 16-) Detecting Circle By Hough***
+***code No 17-) Detecting Circle By Hough***
 
 
 ```python
@@ -1407,7 +1408,7 @@ cv2.destroyAllWindows()
 ```
 
 
-# Code No 17-) Hough Transformation Lines (OpenCV)
+# Code No 18-) Hough Transformation Lines (OpenCV)
   ***Introduction***
 
 The Hough Transform is used in image processing to detect shapes like lines, circles, and ellipses.
@@ -1543,7 +1544,7 @@ cv2.HoughLinesP() → Detect line segments
 
 
 
-# Code No 18-) Image Background Removal (OpenCV)
+# Code No 19-) Image Background Removal (OpenCV)
 
 
   ***Introduction***
@@ -1644,7 +1645,7 @@ cv2.destroyAllWindows()
 
 
 
-# Code No 19-) Image Blending with OpenCV:
+# Code No 20-) Image Blending with OpenCV:
    
    
    ***Introduction***
@@ -1746,7 +1747,7 @@ cv2.destroyAllWindows()
 
 
 
-# Code No 20-) Creating Image Border (OpenCV):
+# Code No 21-) Creating Image Border (OpenCV):
    ***Introduction***
 
 
@@ -1812,7 +1813,7 @@ cv2.destroyAllWindows()
 
 
 
-# Code No 21-) Image Analysis Using Histogram (OpenCV):
+# Code No 22-) Image Analysis Using Histogram (OpenCV):
 
 
    ***Introduction***
@@ -2012,7 +2013,7 @@ cv2.destroyAllWindows()
 
 
 
-# Code No 22-) Morphological Transformations (OpenCV):
+# Code No 23-) Morphological Transformations (OpenCV):
 
 
    ***Introduction***
@@ -2172,7 +2173,7 @@ cv2.destroyAllWindows()
 
 
 
-# Code No 24-) Mouse Binding (OpenCV):
+# Code No 25-) Mouse Binding (OpenCV):
    ***Introduction***
 
 ***Mouse Binding allows you to detect mouse clicks on an image.***
@@ -2225,7 +2226,7 @@ cv2.destroyAllWindows()
 
 
 
-# Code No 25-) Image Contours (OpenCV):
+# Code No 26-) Image Contours (OpenCV):
 
 
    ***Introduction***
@@ -2314,7 +2315,7 @@ cv2.destroyAllWindows()
 
 
 
-# Code No 26-) Image Gradient (OpenCV):
+# Code No 27-) Image Gradient (OpenCV):
 
 
    ***Introduction:***
@@ -2405,7 +2406,7 @@ cv2.destroyAllWindows()
 
 
 
-# Code No 27-) Image Operations (Pixels & Coordinates) - OpenCV
+# Code No 28-) Image Operations (Pixels & Coordinates) - OpenCV
 
 
 ***Introduction***
@@ -2518,7 +2519,7 @@ cv2.destroyAllWindows()
 
 
 
-#Code No 28-) Image Smoothing and Filters - OpenCV:
+#Code No 29-) Image Smoothing and Filters - OpenCV:
 
 
    ***Introduction:***
@@ -2632,7 +2633,7 @@ Bilateral	Removes noise while preserving edges; slower but edge-preserving.***
 
 
 
-# Code No 29-) Canny Edge Detection - OpenCV:
+# Code No 30-) Canny Edge Detection - OpenCV:
 
 
    ***Introduction***
@@ -2727,7 +2728,7 @@ Always convert images to grayscale before applying Canny.***
 
 
 
-# Code No 30-) Image Pyramids – OpenCV:
+# Code No 31-) Image Pyramids – OpenCV:
 
 
    ***Introduction:***
@@ -2797,7 +2798,7 @@ Pyramids are useful for multi-scale image analysis***
 
 
 
-# Code No 31-) Object Detection on Live Video
+# Code No 32-) Object Detection on Live Video
    
    
    ***Theory***
@@ -2875,7 +2876,7 @@ cv2.destroyAllWindows()
 
 
 
-# Code No 32-) Object Detection OpenCV:
+# Code No 33-) Object Detection OpenCV:
 
 
 ***Theory***
@@ -2942,7 +2943,7 @@ cv2.destroyAllWindows()
 
 
 
-# Code No 33-) Object Tracking and Detection Using OpenCV
+# Code No 34-) Object Tracking and Detection Using OpenCV
    
    
    ***Theory***
