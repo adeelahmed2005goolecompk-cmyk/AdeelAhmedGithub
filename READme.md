@@ -3203,14 +3203,14 @@ UI-based OpenCV application***
 # THIS IS THE 1st IMAGE WHICH IS USED INTO THE CODE:
 
 
-![Alt Text](
+![Alt Text](images/pic_3.jpg)
 
 
 
 # THIS IS THE 2ND IMAGE WHICH IS THE INTO THE CODE:
 
 
-![Alt Text](
+![Alt Text](images/pic_4jpg)
 
 
 
@@ -3363,7 +3363,9 @@ Farneback	Dense	Slower	Captures f***
 # THIS IS THE VIDEO WHICH IS USED INTO THE CDE:
 
 
-[Watc Video](
+[Watc Video](images/2008.mp4)
+
+
 
 
 
