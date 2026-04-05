@@ -181,7 +181,10 @@ cv2.destroyAllWindows()
 
 ## Sample code 
 
-```python
+
+```python Code:
+
+
 import cv2
 import numpy as np
 
@@ -3685,7 +3688,144 @@ cv2.destroyAllWindows()
 
 
 
+# Code Open 41-) Video Capture and Processing with OpenCV:
 
+
+***Theory:***
+
+
+***This code demonstrates three ways to capture and process video using OpenCV:***
+
+
+***Method 1:*** 
+
+
+**Local Webcam Capture – Captures video from your laptop webcam and displays both color and grayscale frames.**
+
+
+***Method 2:***
+
+
+**IP/Android Camera Streaming – Captures video from an Android device over the same Wi-Fi network and saves it locally.**
+
+
+***Method 3:***
+
+
+**YouTube Video Capture – Captures video frames from a YouTube link and saves them.
+Each method also shows resizing frames and saving videos using OpenCV’s VideoWriter.**
+
+
+#  Method 1: Local Webcam Capture:
+
+
+```python Code
+
+
+import cv2
+
+cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+
+try:
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            break
+
+        # Resize frame and convert to grayscale
+        frame = cv2.resize(frame, (700, 600))
+        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+        # Display frames
+        cv2.imshow("Color Frame", frame)
+        cv2.imshow("Gray Frame", gray)
+
+        # Press ESC to exit
+        key = cv2.waitKey(1)
+        if key == 27:
+            break
+except Exception as e:
+    print("Error:", e)
+finally:
+    cap.release()
+    cv2.destroyAllWindows()
+```
+
+
+# Method 2: IP/Android Camera Streaming:
+
+
+```Python Code:
+
+
+camera_url = "http://192.168.100.4:8080/video"
+cap = cv2.VideoCapture()
+cap.open(camera_url)
+print("Camera opened:", cap.isOpened())
+
+# Prepare video writer
+fourcc = cv2.VideoWriter_fourcc(*"XVID")
+output = cv2.VideoWriter("A:\\KING.mp4", fourcc, 20.0, (700, 600))
+
+while cap.isOpened():
+    ret, frame = cap.read()
+    if ret:
+        frame = cv2.resize(frame, (700, 600))
+        output.write(frame)
+        cv2.imshow("Color Frame", frame)
+
+        # Press 'k' to exit
+        if cv2.waitKey(1) & 0xFF == ord('k'):
+            break
+    else:
+        break
+
+cap.release()
+output.release()
+cv2.destroyAllWindows()
+```
+
+# Method 3: YouTube Video Capture:
+
+
+```Python Code:
+
+
+import pafy
+
+youtube_url = "https://www.youtube.com/watch?v=DIf8twwgDzw"
+video = pafy.new(youtube_url)
+best = video.getbest(preftype="mp4")
+
+cap = cv2.VideoCapture(best.url)
+print("YouTube video opened:", cap.isOpened())
+
+output = cv2.VideoWriter("A:\\KING.mp4", fourcc, 20.0, (700, 600))
+
+while cap.isOpened():
+    ret, frame = cap.read()
+    if not ret:
+        break
+
+    frame = cv2.resize(frame, (700, 600))
+    output.write(frame)
+    cv2.imshow("Color Frame", frame)
+
+    # Press 'k' to exit
+    if cv2.waitKey(1) & 0xFF == ord('k'):
+        break
+
+cap.release()
+output.release()
+cv2.destroyAllWindows()
+```
+
+
+# This format is:
+
+***Readable: Each method is clearly separated.
+Documented: Small comments explain what each section does.
+GitHub-ready: Perfect for a .py file with inline explanation***
 
 
 
