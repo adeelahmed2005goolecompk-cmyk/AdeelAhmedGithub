@@ -3210,6 +3210,7 @@ UI-based OpenCV application***
 # THIS IS THE 2ND IMAGE WHICH IS THE INTO THE CODE:
 
 
+
 ![Alt Text](images/pic_4jpg)
 
 
@@ -3367,17 +3368,61 @@ Farneback	Dense	Slower	Captures f***
 
 
 
+# Code No 37-) ROI (Region of Interest):
+   
+   
+   ***Theory***
+   
+
+***ROI (Region of Interest) means selecting a specific part of an image for processing.
+It allows focusing only on important areas
+Reduces computation
+Used in object detection, tracking, etc.***
 
 
+***In OpenCV, ROI is selected using slicing:
+img[y1:y2, x1:x2]***
 
 
+```Python Code:
 
 
+import cv2
+import numpy as np
+
+# Read image
+img = cv2.imread("52.jpg")
+
+# Check image loaded
+if img is None:
+    print("Error: Image not found")
+    exit()
+
+# Resize image
+img = cv2.resize(img, (500, 500))
+
+# Select ROI (Region of Interest)
+roi = img[241:833, 2857:3321]
+
+# Paste ROI to different locations
+img[241:833, 2977:3441] = roi
+img[241:833, 3097:3561] = roi
+img[241:833, 2857:3321] = roi
+
+# Show image
+cv2.imshow("Image", img)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
 
 
+# Output
+***Selected part of image is copied
+Same region pasted at multiple location.***
 
 
-
+![Alt Text](images/52.jpg)
 
 
 
