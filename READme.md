@@ -3427,10 +3427,6 @@ Same region pasted at multiple location.***
 ![Alt Text](images/52.jpg)
 
 
-
-
-
-
 # Code No 38-) Thresholding in OpenCV:
    
    
@@ -3551,6 +3547,12 @@ cv2.destroyAllWindows()
 ```
 
 
+# THIS IS THE 1ST IMAGE WHICHC IS USED INTO THE CODE:
+
+
+![Alt Text](images/ben-ten.jpg)
+
+
 ***Method 2 (Template Matching)***
 
 
@@ -3606,7 +3608,7 @@ cv2.destroyAllWindows()
 Shows match using rectangle**
 
 
-# THIS IS THE IMAGE WHICH IS USED IN TO THE CODE:
+# THIS IS THE 2nd IMAGE WHICH IS USED IN TO THE CODE:
 
 
 ![Alt Text](images/ben-ten.jpg)
