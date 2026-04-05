@@ -3363,7 +3363,7 @@ Farneback	Dense	Slower	Captures f***
 # THIS IS THE VIDEO WHICH IS USED INTO THE CDE:
 
 
-[Watc Video](images/2008.mp4)
+[Watch Video](images/2008.mp4)
 
 
 
@@ -3422,6 +3422,7 @@ Same region pasted at multiple location.***
 
 
 ![Alt Text](images/52.jpg)
+
 
 
 
@@ -3501,14 +3502,182 @@ Each method shows a different way of separating pixel intensities.*
 
 
 
+# Code No 39-) Template Matching (OpenCV)
+
+
+   ***Theory***
+
+
+***Template Matching is a technique used to find a small image (template) inside a larger image.
+It slides the template over the image
+Compares pixel values
+Best match = highest similarity***
+
+
+# Used in:
+
+
+***Object detection
+Pattern recognition***
+
+
+***Method 1 (Face Detection)***
+
+
+```Python Code:
+
+
+import cv2
+import numpy as np
+
+img = cv2.imread("ben-ten.jpg")
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+face_cascade = cv2.CascadeClassifier(
+    cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
+)
+
+faces = face_cascade.detectMultiScale(gray, 1.1, 5)
+
+for (x, y, w, h) in faces:
+    cv2.rectangle(img, (x, y), (x+w, y+h), (0, 0, 255), 2)
+
+cv2.imshow("Face Detection", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+
+***Method 2 (Template Matching)***
+
+
+```
+Python Code:
+
+
+import cv2
+import numpy as np
+
+img = cv2.imread("ben-ten.jpg")
+img = cv2.resize(img, (250, 250))
+
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+_, thresh = cv2.threshold(gray, 120, 255, cv2.THRESH_BINARY)
+
+template = thresh[50:120, 50:120]
+h, w = template.shape
+
+methods = [
+    cv2.TM_CCOEFF,
+    cv2.TM_CCOEFF_NORMED,
+    cv2.TM_CCORR,
+    cv2.TM_CCORR_NORMED,
+    cv2.TM_SQDIFF,
+    cv2.TM_SQDIFF_NORMED
+]
+
+for method in methods:
+    img_draw = img.copy()
+
+    res = cv2.matchTemplate(thresh, template, method)
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+
+    if method in [cv2.TM_SQDIFF, cv2.TM_SQDIFF_NORMED]:
+        top_left = min_loc
+    else:
+        top_left = max_loc
+
+    bottom_right = (top_left[0] + w, top_left[1] + h)
+    cv2.rectangle(img_draw, top_left, bottom_right, (0, 255, 0), 2)
+
+    cv2.imshow("Result", img_draw)
+    cv2.waitKey(0)
+
+cv2.destroyAllWindows()
+```
+
+***Output**
+
+
+**Detects object location using template
+Shows match using rectangle**
+
+
+# THIS IS THE IMAGE WHICH IS USED IN TO THE CODE:
+
+
+![Alt Text](images/ben-ten.jpg)
 
 
 
 
 
+# Code No 40-) Video Background Removal:
 
 
+# Theory:
 
+
+***Background subtraction is a technique to isolate foreground objects in videos.
+It works by separating moving objects (foreground) from a static or relatively static background.
+There are multiple approaches to remove the background, and here we demonstrate 
+two common methods: MOG2 and KNN.***
+
+
+```Python Code:
+
+
+import cv2
+import numpy as np
+
+# Loading Video (use raw string r"" for path)
+cap = cv2.VideoCapture(r"A:\computer_Vision\2008.mp4")
+
+# Background Subtraction Algorithms
+
+
+# MOG2 algorithm (detect shadows)
+algo1 = cv2.createBackgroundSubtractorMOG2(detectShadows=True)
+
+# KNN algorithm (detect shadows)
+algo2 = cv2.createBackgroundSubtractorKNN(detectShadows=True)
+
+# Check if video opened successfully 
+if not cap.isOpened():
+    print("Error: Could not open video file.")
+    exit()
+
+#  Processing Video
+while True:
+    ret, frame = cap.read()
+    if not ret:
+        break
+
+    # Resize frame for faster processing
+    frame = cv2.resize(frame, (500, 300))
+
+    # Apply background subtraction
+    res1 = algo1.apply(frame)
+    res2 = algo2.apply(frame)
+    
+    #  Display
+    cv2.imshow("Video", frame)
+    cv2.imshow("Result MOG2", res1)
+    cv2.imshow("Result KNN", res2)
+
+    # Press 'n' to exit
+    if cv2.waitKey(25) & 0xFF == 110:  # ASCII of 'n'
+        break
+
+# Release resources
+cap.release()
+cv2.destroyAllWindows()
+```
+
+# THIS IS THE VIDEO WHICH IS USED INTO THE CODE:
+
+
+![Watch Video](images/2008.mp4)
 
 
 
