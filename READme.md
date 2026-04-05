@@ -3100,19 +3100,110 @@ Comments inside the code explain each step clearly***
 
 
 
+# Code No 35-) ***Image Blending using Trackbars (OpenCV):***
+
+
+   ***Introduction***
+
+
+**Image blending is a technique used in image processing to combine two images into a single image. In this project, we use OpenCV trackbars to dynamically control the blending ratio between two images in real time.
+This makes the blending process interactive and easy to understand.**
+
+# ***How it Works***
+
+
+***Two images are loaded and resized to the same size.
+A window is created with trackbars.
+The alpha trackbar controls the blending ratio.
+A switch (ON/OFF) decides whether blending is applied or not.
+The function cv2.addWeighted() is used for blending.***
+
+
+# ***Key Concept***
+
+
+***The blending formula used is:***
+
+***Output = (1 - alpha) * Image1 + alpha * Image2
+alpha = 0 → Only Image1
+alpha = 1 → Only Image2
+0 < alpha < 1 → Mixed Image***
+
+
+# Project: Image Blending using Trackbars:
+
+
+```Python Code:
+
+import cv2
+import numpy as np
+
+def nothing(x):
+    pass
+
+# Read images
+img1 = cv2.imread(r"A:\computer_Vision\pic_3.jpg")
+img2 = cv2.imread(r"A:\computer_Vision\pic_4.jpg")
+
+# Check images
+if img1 is None or img2 is None:
+    print("Error: Image not found")
+    exit()
+
+# Resize images to same size
+img1 = cv2.resize(img1, (400, 400))
+img2 = cv2.resize(img2, (400, 400))
+
+# Create window
+cv2.namedWindow("click")
+
+# Create trackbars
+cv2.createTrackbar("alpha", "click", 0, 100, nothing)
+switch = "0 : OFF \n1 : ON"
+cv2.createTrackbar(switch, "click", 0, 1, nothing)
+
+while True:
+    s = cv2.getTrackbarPos(switch, "click")
+    a = cv2.getTrackbarPos("alpha", "click")
+    n = a / 100.0
+
+    if s == 0:
+        output = img1.copy()
+    else:
+        output = cv2.addWeighted(img1, 1 - n, img2, n, 0)
+        cv2.putText(output, str(a), (20, 50),
+                    cv2.FONT_ITALIC, 2, (102, 0, 17), 2)
+
+    cv2.imshow("click", output)
+
+    if cv2.waitKey(1) & 0xFF == 27:
+        break
+
+cv2.destroyAllWindows()
+```
 
 
 
+# ***Features:***
+
+
+***Real-time image blending
+Adjustable transparency using trackbar
+ON/OFF blending switch
+Simple and interactive UI***
+
+
+***Applications
+Image editing tools
+Computer vision projects
+UI-based OpenCV application***
 
 
 
+# THIS IS THE IMAGE WHICH IS USED INTO THE CODE:
 
 
-
-
-
-
-
+![Alt Text](
 
 
 
