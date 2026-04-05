@@ -3206,12 +3206,11 @@ UI-based OpenCV application***
 ![Alt Text](images/pic_3.jpg)
 
 
-
 # THIS IS THE 2ND IMAGE WHICH IS THE INTO THE CODE:
 
 
+![Alt Text](images/pic_4.jpg)
 
-![Alt Text](images/pic_4jpg)
 
 
 
@@ -3428,7 +3427,77 @@ Same region pasted at multiple location.***
 
 
 
+# Code No 38-) Thresholding in OpenCV:
+   
+   
+   ***Theory***
+   
 
+**Thresholding is used to convert a grayscale image into a binary image.
+It separates pixels based on intensity
+If pixel value > threshold → set to max value
+If pixel value < threshold → set to 0**
+
+
+# Useful for:
+
+***Image segmentation
+Object detection
+Preprocessing***
+
+
+# Types of Thresholding:
+
+
+***THRESH_BINARY → pixel > thresh → white, else black
+THRESH_BINARY_INV → opposite of binary
+THRESH_TRUNC → values above threshold are truncated
+THRESH_TOZERO → below threshold → 0
+THRESH_TOZERO_INV → above threshold → 0***
+
+
+```Python Code:
+
+
+import cv2
+import numpy as np
+
+# Read image in grayscale
+img = cv2.imread("602.jpg", cv2.IMREAD_GRAYSCALE)
+
+cv2.imshow("Original", img)
+
+# Apply different thresholding methods
+_, th1 = cv2.threshold(img, 50, 255, cv2.THRESH_BINARY)
+_, th2 = cv2.threshold(img, 50, 255, cv2.THRESH_BINARY_INV)
+_, th3 = cv2.threshold(img, 127, 255, cv2.THRESH_TRUNC)
+_, th4 = cv2.threshold(img, 127, 255, cv2.THRESH_TOZERO)
+_, th5 = cv2.threshold(img, 127, 255, cv2.THRESH_TOZERO_INV)
+
+# Show results
+cv2.imshow("THRESH_BINARY", th1)
+cv2.imshow("THRESH_BINARY_INV", th2)
+cv2.imshow("THRESH_TRUNC", th3)
+cv2.imshow("THRESH_TOZERO", th4)
+cv2.imshow("THRESH_TOZERO_INV", th5)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+
+# Output:
+
+
+*Different thresholding techniques applied
+Each method shows a different way of separating pixel intensities.*
+
+
+
+# THIS IS THE CODE WHCH IS USED INTO THE CODE:
+
+
+![Alt Text](images/602.jpg)
 
 
 
