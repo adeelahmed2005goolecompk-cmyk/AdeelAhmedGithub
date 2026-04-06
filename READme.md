@@ -87,7 +87,19 @@ cv2.destroyAllWindows()
 **Ans:** Here is the full code of converting an image into gray scale>:
 
 
-# ***THIS CODE IS ONLY FOR LOADING AN IMAGE:
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+
+cv2.imshow("Gray Scale Image", gray)
+
+
+cv2.waitKey(0)
+
+
+cv2.destroyAllWindows()
+
+
+# ***THIS CODE IS ONLY FOR LOADING AN IMAGE:***
 
 
 **Code Input**
