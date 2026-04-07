@@ -3419,7 +3419,7 @@ import cv2
 import numpy as np
 
 # Read image
-img = cv2.imread("52.jpg")
+img = cv2.imread("A:\computer_Vision\thoor.jpg")
 
 # Check image loaded
 if img is None:
@@ -3450,7 +3450,7 @@ cv2.destroyAllWindows()
 Same region pasted at multiple location.***
 
 
-![Alt Text](images/52.jpg)
+![Alt Text](images/thoor.jpg)
 
 
 # Code No 38-) Thresholding in OpenCV:
