@@ -3444,10 +3444,7 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
 
-
-# Output
-***Selected part of image is copied
-Same region pasted at multiple location.***
+# THIS IS THE IMAGE WHICH IS USED INTO THE CODEE:
 
 
 ![Alt Text](images/thoor.jpg)
