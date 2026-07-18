@@ -1,0 +1,190 @@
+#OpenCV Drawing Functions Tutorial#
+
+##Theory##
+
+This Python script demonstrates basic drawing operations using OpenCV (Open Source Computer Vision Library). 
+OpenCV provides various functions to draw geometric shapes and text on images, which are essential for computer vision 
+applications like object detection, annotation, and visualization.
+
+Key Concepts Covered:
+Image Representation: Images are represented as NumPy arrays with dimensions (height, width, channels)
+
+Drawing Functions: Various shapes can be drawn with different colors, thickness, and styles
+
+Coordinate System: OpenCV uses (x, y) coordinates where (0,0) is the top-left corner
+
+Color Format: Colors are specified in BGR (Blue, Green, Red) format
+
+Complete Code
+python
+import numpy as np
+import cv2
+
+# Read image (make sure file has extension like .jpg or .png.)
+img = cv2.imread("A:/computer_Vision/602.jpg")
+
+# Draw a rectangle.
+cv2.rectangle(img, (50, 50), (200, 200), (0, 255, 0), -2)
+
+# Draw a circle.
+cv2.circle(img, (200, 200), 50, (255, 0, 0), -2)
+
+# Draw a line.
+cv2.line(img, (0, 0), (200, 200), (0, 0, 255), 2)
+
+# DRAWING ARROWED LINE.
+img = cv2.arrowedLine(img, (0, 125), (255, 255), (255, 0, 125), 3)
+
+# Put text.
+img = cv2.putText(img, "MR.SHAMEER", (20, img.shape[0]-20),
+                  cv2.FONT_HERSHEY_SCRIPT_SIMPLEX, 1,
+                  (0,125,255), 2, cv2.LINE_AA)
+
+img = cv2.ellipse(img, (200, 200), (100, 50), 70, 70, 500, (155, 155, 155), -5)
+
+# FOR FULL BLACK SCREEN.
+# img = np.zeros([512, 512, 3], np.uint8)*255
+
+# FOR FULL WHITE SCREEN.
+img = np.ones([512, 512, 3], np.uint8)*255
+
+# Show image.
+cv2.imshow("Image", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+Code Breakdown
+1. Import Libraries
+python
+import numpy as np
+import cv2
+NumPy: For array operations and image manipulation
+
+OpenCV: For computer vision operations
+
+2. Reading an Image
+python
+img = cv2.imread("A:/computer_Vision/602.jpg")
+Reads an image from the specified file path
+
+Returns a NumPy array containing the image
+
+3. Drawing Functions
+Function	Parameters	Description
+cv2.rectangle()	(img, pt1, pt2, color, thickness)	Draws a rectangle
+cv2.circle()	(img, center, radius, color, thickness)	Draws a circle
+cv2.line()	(img, pt1, pt2, color, thickness)	Draws a line
+cv2.arrowedLine()	(img, pt1, pt2, color, thickness)	Draws an arrowed line
+cv2.putText()	(img, text, org, font, fontScale, color, thickness, lineType)	Adds text
+cv2.ellipse()	(img, center, axes, angle, startAngle, endAngle, color, thickness)	Draws an ellipse
+Parameter Notes:
+
+thickness = -2 or cv2.FILLED: Fills the shape
+
+thickness = -5: Special negative value for specific effects
+
+Colors in BGR format: (Blue, Green, Red)
+
+4. Creating Blank Images
+python
+# Black screen (commented out)
+# img = np.zeros([512, 512, 3], np.uint8)*255
+
+# White screen
+img = np.ones([512, 512, 3], np.uint8)*255
+np.zeros(): Creates a black image (all zeros)
+
+np.ones() * 255: Creates a white image (all ones multiplied by 255)
+
+5. Displaying the Image
+python
+cv2.imshow("Image", img)  # Display window with title "Image"
+cv2.waitKey(0)            # Wait for any key press
+cv2.destroyAllWindows()   # Close all OpenCV windows
+Visual Representation of Drawings
+text
++--------------------------------------------------+
+|                                                    |
+|   (50,50)  ┌──────────┐                           |
+|            │          │                           |
+|            │          │  Rectangle (Green)        |
+|            │          │                           |
+|            └──────────┘ (200,200)                 |
+|                                                    |
+|                  ⚪ Circle (Blue)                  |
+|                    at (200,200)                    |
+|                                                    |
+|  Line (Red) from (0,0) to (200,200)               |
+|                                                    |
+|  → Arrowed Line (Pink) from (0,125) to (255,255)  |
+|                                                    |
+|  "MR.SHAMEER" (Orange) at bottom-left             |
+|                                                    |
+|  Ellipse (Gray) centered at (200,200)             |
++--------------------------------------------------+
+How to Run the Code
+Prerequisites:
+
+bash
+pip install opencv-python numpy
+Update File Path:
+
+Change "A:/computer_Vision/602.jpg" to your image path
+
+Or comment out the image reading and uncomment the blank image creation
+
+Run the Script:
+
+bash
+python 49-test_on_pic.py
+Common Issues & Solutions
+Issue	Solution
+Image not found	Check file path and extension
+Window doesn't open	Ensure OpenCV is properly installed
+Wrong colors	Remember OpenCV uses BGR, not RGB
+Shapes not visible	Check if drawing is happening before or after blank image creation
+Practice Exercises
+Modify the code to draw additional shapes (polygons, polylines)
+
+Change colors to understand BGR format
+
+Create a canvas and draw a smiley face using different shapes
+
+Add multiple texts with different fonts and sizes
+
+```Pyton
+  import numpy as np
+import cv2
+
+# Read image (make sure file has extension like .jpg or .png.)
+img = cv2.imread("A:/computer_Vision/602.jpg")
+
+# Draw a rectangle.
+cv2.rectangle(img, (50, 50), (200, 200), (0, 255, 0), -2)
+
+# Draw a circle.
+cv2.circle(img, (200, 200), 50, (255, 0, 0), -2)
+
+# Draw a line.
+cv2.line(img, (0, 0), (200, 200), (0, 0, 255), 2)
+
+# DRAWING ARROWED LINE.
+img = cv2.arrowedLine(img, (0, 125), (255, 255), (255, 0, 125), 3)
+
+# Put text.
+img = cv2.putText(img, "MR.SHAMEER", (20, img.shape[0]-20),
+                  cv2.FONT_HERSHEY_SCRIPT_SIMPLEX, 1,
+                  (0,125,255), 2, cv2.LINE_AA)
+
+img = cv2.ellipse(img, (200, 200), (100, 50), 70, 70, 500, (155, 155, 155), -5)
+
+#FOR FULL BLACK SCREEN.
+# img = np.zeros([512, 512, 3], np.uint8)*255
+
+# FOR FULL WHITE SCREEN.
+img = np.ones([512, 512, 3], np.uint8)*255
+
+# Show image.
+cv2.imshow("Image", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
